@@ -43,7 +43,7 @@ Sites that know a person’s PII (e.g., when people sign in using their email ad
 As such, there will be people for whom providing this information in exchange for funding the web ecosystem is an unacceptable trade-off. Whether the browser sends a real FLoC or a random one is user controllable.
 
 ### Tracking people via their flock
-A flock could be used as a user identifier. It may not have enough bits of information to individually identify someone, but in combination with other information (such as an IP address), it might. One design mitigation is to ensure flock sizes are large enough that they are not useful for tracking. The [Privacy Budget explainer](https://github.com/bslassey/privacy-budget) points towards another relevant tool.
+A flock could be used as a user identifier. It may not have enough bits of information to individually identify someone, but in combination with other information (such as an IP address), it might. One design mitigation is to ensure flock sizes are large enough that they are not useful for tracking. The [Privacy Budget explainer](https://github.com/bslassey/privacy-budget) points towards another relevant tool that FLoC could be constrained by.
 
 ### Sensitive Categories
 A flock might reveal sensitive information. As a first mitigation, the browser should remove sensitive categories from its data collection. But this does not mean sensitive information can’t be leaked. Some people are sensitive to categories that others are not, and there is no globally accepted notion of sensitive categories.
