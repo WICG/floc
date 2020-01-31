@@ -50,4 +50,4 @@ A flock might reveal sensitive information. As a first mitigation, the browser s
 
 Flocks could be evaluated for fairness by measuring and limiting their deviation from population-level demographics with respect to the prevalence of sensitive categories, to prevent their use as proxies for a sensitive category. However, this evaluation would require knowing how many individual people in each flock were in the sensitive categories, information which could be difficult or intrusive to obtain.
 
-In any case, sites that use flock for ad targeting (or any other purpose) will need to ensure that people are treated fairly, just as they must with algorithmic decisions made based on any other data today.
+It should be clear that FLoC will never be able to prevent all misuse. There will be categories that are sensitive in contexts that weren't predicted. Beyond FLoC's technical means of preventing abuse, sites that use flock will need to ensure that people are treated fairly, just as they must with algorithmic decisions made based on any other data today.
