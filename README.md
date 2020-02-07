@@ -3,7 +3,7 @@ This is an explainer for a new way that browsers could enable interest-based adv
 
 ## Overview
 
-The choice of what ads to show on a web page may typically be based on three broad categories of information: (1) the site or page irrespective of who is reading it (e.g., "put this ad on web pages about motorcycles"); (2) general information about the interests of the person who is going to see the ad (e.g., “show this ad to Classical Music Lovers”); and (3) specific previous actions the person has taken (e.g., "offer a discount on some shoes that you left in a shopping cart"). This document addresses category (2), ads targeting based on someone's general interests.
+The choice of what ads to show on a web page may typically be based on three broad categories of information: (1) First-party and contextual information (e.g., "put this ad on web pages about motorcycles"); (2) general information about the interests of the person who is going to see the ad (e.g., “show this ad to Classical Music Lovers”); and (3) specific previous actions the person has taken (e.g., "offer a discount on some shoes that you left in a shopping cart"). **This document addresses category (2), ads targeting based on someone's general interests.**  For personalized advertising in category (3), please check out the [TURTLEDOVE](https://github.com/michaelkleber/turtledove) proposal.
 
   
 
