@@ -19,15 +19,13 @@ Browsers would need a way to form clusters that are both useful and private: Use
 
   
 
-A FLoC Key, or "flock", is a short name that is shared by a large number (thousands) of people, derived by the browser from its user’s browsing history. The browser updates the flock over time as its user traverses the web. The value is made available to websites via a Client Hint:
+A FLoC Key, or "flock", is a short name that is shared by a large number (thousands) of people, derived by the browser from its user’s browsing history. The browser updates the flock over time as its user traverses the web. The value is made available to websites via a new JavaScript API:
 
-```http
-Accept-CH = Sec-CH-Flock
-```
-```http
-GET https://ad-network.example/serve_ad.html?width=300&height=250
-Referer: https://allaboutmotorcycles.com/home.html
-Sec-CH-Flock: 43A7
+```javascript
+cohort = await document.interestCohort();
+url = new URL("https://ads.example/getCreative");
+url.searchParams.append("cohort", cohort);
+creative = await fetch(url);
 ```
 
 The browser uses machine learning algorithms to develop a flock based on the sites that an individual visits. The algorithms might be based on the URLs of the visited sites, on the content of those pages, or other factors. The central idea is that these input features to the algorithm, including the web history, are kept local on the browser and are not uploaded elsewhere — the browser only exposes the generated flock. The browser ensures that flocks are well distributed, so that each flock represents thousands of people. The browser may further leverage other anonymization methods, such as differential privacy. The number of flocks should be small, to reinforce that they cannot carry detailed information — short flock names ("43A7") can help make that clear.
@@ -36,7 +34,7 @@ The browser uses machine learning algorithms to develop a flock based on the sit
 There are several abuse scenarios this proposal must consider.
 
 ### Revealing People’s Interests to the Web
-This API democratizes access to some information about an individual’s general browsing history (and thus, general interests) to any site that opts into the header. This is in contrast to today’s world, in which cookies or other tracking techniques may be used to collate someone’s browsing activity across many sites.
+This API democratizes access to some information about an individual’s general browsing history (and thus, general interests) to any site that opts into it. This is in contrast to today’s world, in which cookies or other tracking techniques may be used to collate someone’s browsing activity across many sites.
 
 Sites that know a person’s PII (e.g., when people sign in using their email address) could record and reveal their flock. This means that information about an individual's interests may eventually become public. This is not ideal, but still better than today’s situation in which PII can be joined to exact browsing history obtained via third-party cookies.
 
