@@ -49,3 +49,29 @@ A cohort might reveal sensitive information. As a first mitigation, the browser 
 Cohorts could be evaluated for fairness by measuring and limiting their deviation from population-level demographics with respect to the prevalence of sensitive categories, to prevent their use as proxies for a sensitive category. However, this evaluation would require knowing how many individual people in each cohort were in the sensitive categories, information which could be difficult or intrusive to obtain.
 
 It should be clear that FLoC will never be able to prevent all misuse. There will be categories that are sensitive in contexts that weren't predicted. Beyond FLoC's technical means of preventing abuse, sites that use cohorts will need to ensure that people are treated fairly, just as they must with algorithmic decisions made based on any other data today.
+
+## Proof of Concept Experiment
+As a first step toward implementing FLoC, browsers will need to perform closed experiments in order to find a good clustering method to assign users to cohorts and to analyze them to ensure that they’re not revealing sensitive information about users. We consider this the proof-of-concept (POC) stage. The initial phase will be an experiment with cohorts to ensure that they are sufficiently private to be made publicly available to the web. This phase will inform any potential additional phases which would focus on other goals.
+
+For this initial phase of Chrome’s Proof-Of-Concept, simple client-side methods will be used to calculate the user’s cohort based on all of the sites that they visit with public IP addresses. The qualifying subset of users who meet the criteria described below will have their cohort temporarily logged with their sync data to perform the sensitivity analysis by Chrome described below. The collection of cohorts will be analyzed to ensure that cohorts are of sufficient size and do not correlate too strongly with known [sensitive categories](https://support.google.com/adspolicy/answer/143465?hl=en). Cohorts that don’t pass the test will be concealed by the browser in any subsequent phases.
+
+### How the Interest Cohort will be calculated
+This is where most of the experimentation will occur as we explore the privacy and utility space of FLoC. Our first approach involves applying a SimHash algorithm to the domains of the sites visited by the user in order to cluster users that visit similar sites together. Other ideas include adding other features, such as the full path of the URL or categories of pages provided by an on-device classifier. We may also apply federated learning methods to estimate client models in a distributed fashion. To further enhance user privacy, we will also experiment with adding noise to the output of the hash function, or with occasionally replacing the user's true cohort with a random one.
+
+### Qualifying users for whom a cohort will be logged with their sync data
+For Chrome’s POC, cohorts will be logged with sync in a limited set of circumstances. Namely, all of the following conditions must be met:
+
+1. The user is logged into a Google account and opted to sync history data with Chrome
+1. The user does not block third-party cookies
+1. The user’s [Google Activity Controls](https://myaccount.google.com/activitycontrols) have the following enabled:
+    1. “Web & App Activity”
+    1. “Include Chrome history and activity from sites, apps, and devices that use Google services”
+1. The user’s [Google Ad Settings](https://adssettings.google.com/) have the following enabled:
+    1. “Ad Personalization”
+    1. “Also use your activity & information from Google services to personalize ads on websites and apps that partner with Google to show ads.” 
+
+### Sites which interest cohorts will be calculated on
+All sites with publicly routable IP addresses that the user visits when not in incognito mode will be included in the POC cohort calculation. 
+
+### Excluding sensitive categories
+We will analyze the resulting cohorts for correlations between cohort and sensitive categories, including the prohibited categories defined [here](https://support.google.com/adspolicy/answer/143465?hl=en). This analysis is designed to protect user privacy by evaluating only whether a cohort may be sensitive, in the abstract, without learning why it is sensitive, i.e., without computing or otherwise inferring specific sensitive categories that may be associated with that cohort. Cohorts that reveal sensitive categories will be blocked or the clustering algorithm will be reconfigured to reduce the correlation. 
