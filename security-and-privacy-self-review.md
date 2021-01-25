@@ -44,7 +44,7 @@ The interest cohort is a temporary identifier. The browser could use machine lea
 
 The specification will advise the implementers to ensure that the identifier is anonymous and doesn't carry sensitive information. The following is a more concrete example of what Chrome is doing at the experimentation phase.
 
-#####Interest Cohort Computation
+##### Interest Cohort Computation
 The interest cohort will be calculated by 1) sim-hashing the navigation history over the last 7 days, and then 2) post-processing the sim-hash to merge small and adjacent cohorts into larger ones, such that each cohort contains at least thousands of people. The interest cohort can also be blocked if server side analysis determined it to be sensitive.
 
 The interest cohort will be calculated/refreshed every 7 days. If the browser is not alive at the scheduled refresh time, the next update will occur when the browser starts up the next time.
