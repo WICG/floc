@@ -1,0 +1,149 @@
+<pre class='metadata'>
+Title: Federated Learning of Cohorts
+Status: CG-DRAFT
+ED: https://github.com/WICG/floc
+Shortname: floc
+Level: 1
+Editor: Yao Xiao, Google, yaoxia@chromium.org
+Editor: Josh Karlin, Google, jkarlin@chromium.org
+Abstract: This specification describes a method that could enable ad-targeting based on the people’s general browsing interest without exposing the exact browsing history.
+!Participate: <a href="https://github.com/WICG/floc">GitHub WICG/floc</a> (<a href="https://github.com/WICG/floc/issues/new">new issue</a>, <a href="https://github.com/WICG/floc/issues?state=open">open issues</a>)
+Group: wicg
+Repository: WICG/floc
+</pre>
+
+<pre class="anchors">
+spec: html; urlPrefix: https://html.spec.whatwg.org/
+    type: dfn
+        text: document; url: document
+
+spec: html; urlPrefix: https://www.w3.org/TR/permissions-policy/
+    type: dfn
+        text: permissions policy; url: permissions-policy
+
+spec: WebIDL; urlPrefix: https://heycam.github.io/webidl/#
+    type: interface
+        text: DOMString; url: idl-DOMString
+</pre>
+
+<section>
+  <h2 id='introduction'>Introduction</h2>
+
+  In today's web, people’s interests are typically inferred based on observing what sites or pages they visit, which relies on tracking techniques like third-party cookies or less-transparent mechanisms like device fingerprinting. It would be better for privacy if interest-based advertising could be accomplished without needing to collect a particular individual’s browsing history.
+
+  This specification provides an API to enable ad-targeting based on the people’s general browsing interest, without exposing the exact browsing history.
+
+  <div class="example">
+    Creating an ad based on the interest cohort:
+
+    <pre class="lang-js">
+      cohort = await document.interestCohort();
+      url = new URL("https://ads.example/getCreative");
+      url.searchParams.append("cohort", cohort);
+      creative = await fetch(url);
+    </pre>
+  </div>
+</section>
+
+<section>
+  <h2 id="interest-cohort">Interest Cohort</h2>
+
+  The interest cohort is a user's assigned interest group under a particular <a href="#cohort-assignment-algorithm">assignment algorithm</a>. An interest cohort comprises an <a>interest cohort id</a> and a <a>version</a>.
+
+  The <dfn>interest cohort id</dfn> represents the group that the user is assigned to by the <a href="#cohort-assignment-algorithm">algorithm</a>. When exposing to the Web as a string, it’s recommended to use a decimal or hexadecimal representation (e.g “17319”, “43A7”). At the minimum, it should not contain the dot character to avoid any ambiguity in the <a>string representation</a> of interest cohort. The interest cohort id may be empty, which means no group is assigned.
+
+  The <dfn>version</dfn> identifies the <a href="#cohort-assignment-algorithm">algorithm</a> used to compute the <a>interest cohort id</a>. When exposing to the Web as a string, it’s recommended to make the browser vendor name as part of the version (e.g. “chrome.2.1”, “v21/mozilla”) to avoid potential naming collisions across browser vendors.
+
+  The <dfn>string representation</dfn> of an interest cohort is a dot concatenated string of the <a>interest cohort id</a> and the <a>version</a>.
+
+  <div class="example">
+    - "17319.chrome.2.1"
+    - ".chrome.2.1"
+    - "43A7.v21/mozilla"
+  </div>
+</section>
+
+<section>
+  <h2 id="the-api">The API</h2>
+
+  The interest cohort API lives under the <a>document</a> object since the access permission is tied to the document scope.
+
+  <pre class="idl">
+    partial interface Document {
+        Promise&lt;DOMString&gt; interestCohort();
+    };
+  </pre>
+
+  On success, the promise will be resolved with a <a>string representation</a> of the interest cohort.
+
+  The promise will reject on permission errors. See the <a href="#access-eligibility">Permission</a> section for more details.
+
+  In exceptional situations when the <a>version</a> is unavailable (i.e. the algorithm is unknown yet), the browser could do whatever it considers reasonable. For example, it could throw an exception, or use a placeholder version, etc.
+</section>
+
+<section>
+  <h2 id="interpretation-from-ad-techs">Interpretation from ad techs</h2>
+  Ad tech companies are supposed to observe the habits of each <a href="#string-representation">interest cohort</a> and ad targeting can then be partly based on what group the person falls into. In general, different <a href="#version">versions</a> should not be compatible. However, the browser vendors could share additional context of the version and/or could provide recommendations on the compatibility between versions.
+</section>
+
+<section>
+  <h2 id="algorithm">Algorithm</h2>
+  <em>This section uses "cohort" as the short name for "<a>interest cohort id</a>".</em>
+
+  <h3 id="cohort-assignment-algorithm">Cohort assignment algorithm</h3>
+  The browser could use machine learning algorithms to develop the cohort.
+
+  <h4 id="input-features">Input features</h4>
+  The input features to the algorithm should be based on information from the visited sites, which may include the URLs, the page contents, or other factors. The input features should be kept local on the browser and should not be uploaded elsewhere — the browser only exposes the generated cohort.
+
+  <h4 id="anonymity-and-privacy-guarantees">Anonymity and Privacy guarantees</h4>
+  The browser should ensure that cohorts are well distributed, so that each represents thousands of people. The browser may further leverage other anonymization methods, such as differential privacy.
+
+  The browser should ensure that the interest cohorts are not correlated with <a href="#sensitive-information">sensitive information</a>.
+
+  The browser may give the user an empty cohort to meet the above requirements.
+
+  <h3 id="updating-invalidating-the-cohort">Updating/Invalidating the cohort</h3>
+  The browser should recompute the cohort on a regular basis so that the user’s latest browsing behavior can be captured. The browser should also limit the computation frequency to mitigate the <a href="#tracking-people-via-their-interest-cohort">fingerprinting risks</a>.
+
+  The browser should respect any change in user preferences (i.e. dedicated permission setting, or cookie setting at the <a href="#adoption-phase">adoption phase</a>) and may need to clear the interest cohort accordingly.
+
+  When the browsing history is deleted and the current interest cohort is derived from any deleted browsing history, the interest cohort should be cleared.
+</section>
+
+<section>
+  <h2 id="privacy-considerations">Privacy Considerations</h2>
+
+  <h3 id="permission">Permission</h3>
+  <h4 id="compute-eligibility">Eligibility for a page to be included in the interest cohort computation</h4>
+  By default, a page is eligible for the interest cohort computation if the <a href="#the-api">document.interestCohort</a> API was used in the page during the page load.
+
+  The page can opt-out itself for the interest cohort computation through the interest-cohort <a>permissions policy</a> header.
+
+  The user agent should offer a dedicated permission setting for the user to disallow sites from being included for interest cohort calculations.
+
+  <h4 id="access-eligibility">Permission to access the interest cohort</h4>
+  The page can restrict itself or subframes from accessing the interest cohort through the interest-cohort <a>permission policy</a> header.
+
+  The user agent should offer a dedicated permission setting for the user to disallow sites from accessing the interest cohort.
+
+  <h4 id="private-browsing-mode">Private Browsing / Incognito mode</h4>
+  In private browsing / incognito mode, using <a href="#the-api">the API</a> should throw an exception.
+
+  <h4 id="adoption-phase">Adoption phase</h4>
+  To make the adoption easier, the user agent may relax the opt-in requirement when third-party cookies still exist. For example, pages with ads resources are an approximation of the pages that are going to opt-in to interest cohort computation in the long run. Thus, at the adoption phase, the page can be eligible to be included in the interest cohort computation if there are ads resources in the page, OR if <a href="the-api">the API</a> is used.
+
+  Besides, at the adoption phase, the browser can use the existing cookie  to approximate the interest cohort permission setting. For example, when cookies are cleared, previous page visits should not be used for interest cohort computation; accessing to the interest cohort within a <a>document</a> should be denied if cookie access is not allowed in the document, or when third-party cookies are disallowed in general.
+
+  <h3 id="sensitive-information">Sensitive information</h3>
+  A cohort might reveal sensitive information. As a first mitigation, the browser should remove sensitive categories from its data collection. But this does not mean sensitive information can’t be leaked. Some people are sensitive to categories that others are not, and there is no globally accepted notion of sensitive categories.
+
+  Cohorts could be evaluated for fairness by measuring and limiting their deviation from population-level demographics with respect to the prevalence of sensitive categories, to prevent their use as proxies for a sensitive category. However, this evaluation would require knowing how many individual people in each cohort were in the sensitive categories, information which could be difficult or intrusive to obtain.
+
+  It should be clear that FLoC will never be able to prevent all misuse. There will be categories that are sensitive in contexts that weren't predicted. Beyond FLoC's technical means of preventing abuse, sites that use cohorts will need to ensure that people are treated fairly, just as they must with algorithmic decisions made based on any other data today.
+
+  <h3 id="tracking-people-via-their-interest-cohort">Tracking people via their interest cohort</h3>
+  A cohort could be used as a user identifier. It may not have enough bits of information to individually identify someone, but in combination with other information (such as an IP address), it might. One design mitigation is to ensure cohort sizes are large enough that they are not useful for tracking. The Privacy Budget explainer points towards another relevant tool that FLoC could be constrained by.
+
+  The interest cohorts over time can also be used as a user identifier. To mitigate the fingerprinting risk, the browser should ensure that the cohort does not update too often.
+</section>
