@@ -73,24 +73,22 @@ spec:webidl; type:dfn; text:resolve
 
   The <dfn for="Document" method>interestCohort()</dfn> method steps are:
   1. Let |p| be [=a new promise=].
-  2. Run the following steps [=in parallel=]:
+  1. [=Enqueue the following steps=] on the <dfn data-dfn-type="dfn" id="interest-cohort-task-source" data-lt="interest cohort task source" data-noexport="by-default">interest cohort task source<a href="#interest-cohort-task-source" class="self-link"></a></dfn>:
+    1. If any of the following is true:
+        - [=this=] is not [=allowed to use=] the "<code><a href="#interest-cohort-policy-controlled-feature">interest-cohort</a></code>" feature.
+        - The document is not allowed to access the interest cohort per user preference settings.
+        - The user agent believes that too many high-entropy bits of information have already been consumed by the given document, and exposing an interest cohort would violate a privacy budget.
+        - The <a href="#cohort-assignment-algorithm">cohort assignment algorithm</a> is unavailable.
 
-    2.1. If any of the following is true:
-      - [=this=] is not [=allowed to use=] the "<code><a href="#interest-cohort-policy-controlled-feature">interest-cohort</a></code>" feature.
-      - The document is not allowed to access the interest cohort per user preference settings.
-      - The user agent believes that too many high-entropy bits of information have already been consumed by the given document, and exposing an interest cohort would violate a privacy budget.
-      - The <a href="#cohort-assignment-algorithm">cohort assignment algorithm</a> is unavailable.
+        then [=reject=] |p| with a "{{NotAllowedError}}" {{DOMException}}.
 
-      then [=reject=] |p| with a "{{NotAllowedError}}" {{DOMException}} and return |p|.
+    1. Let |id| be [=interest cohort id=] from running the <a href="#cohort-assignment-algorithm">cohort assignment algorithm</a>.
+    1. Let |version| be the [=interest cohort version=] corresponding to the <a href="#cohort-assignment-algorithm">cohort assignment algorithm</a>.
 
-    2.2. Let |id| be [=interest cohort id=] from running the <a href="#cohort-assignment-algorithm">cohort assignment algorithm</a>.
+    1. Create the {{InterestCohort}} dictionary |d|, with members {{InterestCohort/id}} being the <a href="#string-representation-of-the-interest-cohort-id">string representation</a> of |id|, and {{InterestCohort/version}} being <a href="#string-representation-of-the-interest-cohort-version">string representation</a> of |version|.
 
-    2.3. Let |version| be the [=interest cohort version=] corresponding to the <a href="#cohort-assignment-algorithm">cohort assignment algorithm</a>.
-
-    2.4. Create the {{InterestCohort}} dictionary |d|, with members {{InterestCohort/id}} being the <a href="#string-representation-of-the-interest-cohort-id">string representation</a> of |id|, and {{InterestCohort/version}} being <a href="#string-representation-of-the-interest-cohort-version">string representation</a> of |version|.
-
-    2.5. [=Resolve=] |p| with |d|.
-  3. Return |p|.
+    1. [=Resolve=] |p| with |d|.
+  1. Return |p|.
 
 </section>
 
