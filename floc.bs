@@ -48,7 +48,7 @@ spec:webidl; type:dfn; text:resolve
 
   The <dfn>interest cohort version</dfn> identifies the <a href="#cohort-assignment-algorithm">algorithm</a> used to compute the [=interest cohort id=].
 
-  The <dfn>string representation of the interest cohort version</dfn> is [=implementation-defined=]. It’s recommended to make the browser vendor name as part of the version (e.g. “chrome.2.1”, “v21/mozilla”), so that when exposed to the Web, there won't be naming collisions across browser vendors.
+  The <dfn>string representation of the interest cohort version</dfn> is [=implementation-defined=]. It's recommended that the browser vendor name is part of the version (e.g. “chrome.2.1”, “v21/mozilla”), so that when exposed to the Web, there won't be naming collisions across browser vendors. As an exception, if two browsers choose to deliberately use the same cohort assignment algorithm, they should pick some other way to give it an unambiguous name and avoid collisions.
 
   The {{InterestCohort}} dictionary is used to contain the [=string representation of the interest cohort id=] and the [=string representation of the interest cohort id=].
 
@@ -93,8 +93,8 @@ spec:webidl; type:dfn; text:resolve
 </section>
 
 <section>
-  <h2 id="interpretation-from-ad-techs">Interpretation from ad techs</h2>
-  Ad tech companies are supposed to observe the habits of each [=interest cohort=] and ad targeting can then be partly based on what group the person falls into. The browser vendors could publicly share more information about the [=interest cohort id=] (e.g. the range of numbers, whether they have semantics, etc.) or the [=interest cohort version=] (e.g. the algorithm detail, the compatibility between versions, etc.) to help the ad techs with their modeling decisions.
+  <h2 id="interpretation">Interpretation</h2>
+  Organizations that wish to interpret cohorts can observe the habits of each [=interest cohort=] and ad targeting can then be partly based on what group the person falls into. The browser vendors could publicly share more information about the [=interest cohort id=] (e.g. the range of numbers, whether they have semantics, etc.) or the [=interest cohort version=] (e.g. the algorithm detail, the compatibility between versions, etc.) to help with their modeling decisions.
 </section>
 
 <section>
@@ -158,7 +158,7 @@ spec:webidl; type:dfn; text:resolve
   <h3 id="sensitive-information">Sensitive information</h3>
   An [=interest cohort=] might reveal sensitive information. As a first mitigation, the browser should remove sensitive categories from its data collection. But this does not mean sensitive information can’t be leaked. Some people are sensitive to categories that others are not, and there is no globally accepted notion of sensitive categories.
 
-  Cohorts could be evaluated for fairness by measuring and limiting their deviation from population-level demographics with respect to the prevalence of sensitive categories, to prevent their use as proxies for a sensitive category. However, this evaluation would require knowing how many individual people in each cohort were in the sensitive categories, information which could be difficult or intrusive to obtain.
+  Cohorts could be evaluated for fairness by measuring and limiting their deviation from population-level demographics with respect to the prevalence of sensitive categories, to prevent their use as proxies for a sensitive category. However, this evaluation would require knowing how many individual people in each cohort were in the sensitive categories, information which could be difficult or intrusive to obtain. As an approximation, the browser could use a mechanism for recognizing which web pages are in sensitive categories.
 
   It should be clear that FLoC will never be able to prevent all misuse. There will be categories that are sensitive in contexts that weren't predicted. Beyond FLoC's technical means of preventing abuse, sites that use cohorts will need to ensure that people are treated fairly, just as they must with algorithmic decisions made based on any other data today.
 
