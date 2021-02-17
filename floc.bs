@@ -81,11 +81,11 @@ spec:webidl; type:dfn; text:resolve
         - The <a href="#cohort-assignment-algorithm">cohort assignment algorithm</a> is unavailable.
 
         then:
-          1. [=Queue a task=] on the <b>|interest cohort task source|</b> to [=reject=] |p| with a "{{NotAllowedError}}" {{DOMException}}.
+          1. [=Queue a task=] on the <dfn>interest cohort task source</dfn> to [=reject=] |p| with a "{{NotAllowedError}}" {{DOMException}}.
           1. Abort these steps.
     1. Let |id| be [=interest cohort id=] from running the <a href="#cohort-assignment-algorithm">cohort assignment algorithm</a>.
     1. Let |version| be the [=interest cohort version=] corresponding to the <a href="#cohort-assignment-algorithm">cohort assignment algorithm</a>.
-    1. [=Queue a task=] on the <b>|interest cohort task source|</b> to perform the following steps:
+    1. [=Queue a task=] on the [=interest cohort task source=] to perform the following steps:
         1. Let |d| be the {{InterestCohort}} dictionary, with {{InterestCohort/id}} being the <a href="#string-representation-of-the-interest-cohort-id">string representation</a> of |id|, and {{InterestCohort/version}} being <a href="#string-representation-of-the-interest-cohort-version">string representation</a> of |version|.
         1. [=Resolve=] |p| with |d|.
   1. Return |p|.
@@ -166,8 +166,6 @@ spec:webidl; type:dfn; text:resolve
   An [=interest cohort=] could be used as a user identifier. It may not have enough bits of information to individually identify someone, but in combination with other information (such as an IP address), it might. One design mitigation is to ensure cohort sizes are large enough that they are not useful for tracking. In addition, if the user agent believes that too many high-entropy bits of information have already been consumed by a given {{Document}}, then the {{Document/interestCohort()}} algorithm will return a rejected promise, which can help mitigate such tracking.
 
   If for any short time period the [=interest cohorts=] exposed to different sites tends to be the same, then the time series of [=interest cohorts=] can also be used as a user identifier. Sites could associate users' first-party identity with a series of [=interest cohorts=] observed over time, and could report these series to a single tracking service. The tracking service could then associate each series with the sites to know the browsing history of an individual.
-
-  Computing the [=interest cohorts=] on-the-fly should make it less likely for different sites to observe the same [=interest cohort=] for a given user. However, those distinct [=interest cohorts=], when casting to a lower dimension, may still be identical, and the above concern still applies though to a lesser extent.
 
   <h3 id="recovering-the-browsing-history-from-cohorts">Recovering the browsing history from cohorts</h3>
   Updating the [=interest cohort=] too often may let a given site learn too much about the user. An attacker could attempt to use <a href="https://en.wikipedia.org/wiki/Compressed_sensing">compressed sensing</a> to recover the browsing history.
