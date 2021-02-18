@@ -168,7 +168,7 @@ spec:webidl; type:dfn; text:resolve
   If for any short time period the [=interest cohorts=] exposed to different sites tends to be the same, then the time series of [=interest cohorts=] can also be used as a user identifier. Sites could associate users' first-party identity with a series of [=interest cohorts=] observed over time, and could report these series to a single tracking service. The tracking service could then associate each series with the sites to know the browsing history of an individual.
 
   <h3 id="recovering-the-browsing-history-from-cohorts">Recovering the browsing history from cohorts</h3>
-  Updating the [=interest cohort=] too often may let a given site learn too much about the user. An attacker could attempt to use <a href="https://en.wikipedia.org/wiki/Compressed_sensing">compressed sensing</a> to recover the browsing history.
+  Updating the [=interest cohort=] too often may increase the likelihood of identifying portions of a user's browsing history, for instance by using <a href="https://en.wikipedia.org/wiki/Compressed_sensing">compressed sensing</a>.
 
   One possible mitigation is: when the [=interest cohort=] is computed and exposed to an origin, pin that [=interest cohort=] to that origin for a period of time. When an [=interest cohort=] is pinned to an origin, the execution of the <a href="#cohort-assignment-algorithm">cohort assignment algorithm</a> on that origin will return the cached [=interest cohort=] instead of computing a new one.
 
