@@ -4,6 +4,7 @@ Status: CG-DRAFT
 ED: https://github.com/WICG/floc
 Shortname: floc
 Level: 1
+URL: https://wicg.github.io/floc/
 Editor: Yao Xiao, Google, yaoxia@chromium.org
 Editor: Josh Karlin, Google, jkarlin@chromium.org
 Abstract: This specification describes a method that could enable ad-targeting based on the people’s general browsing interest without exposing the exact browsing history.
