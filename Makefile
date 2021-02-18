@@ -1,7 +1,7 @@
 SHELL=/bin/bash
 
 local: floc.bs
-	bikeshed --die-on=warning floc floc.bs floc.html
+	bikeshed --die-on=warning spec floc.bs floc.html
 
 floc.html: floc.bs
 	@ (HTTP_STATUS=$$(curl https://api.csswg.org/bikeshed/ \
