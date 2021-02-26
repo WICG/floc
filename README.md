@@ -53,6 +53,12 @@ It should be clear that FLoC will never be able to prevent all misuse. There wil
 ### Opting Out of Computation
 A site should be able to declare that it does not want to be included in the user's list of sites for cohort calculation. This can be accomplished via a new `interest-cohort` [permissions policy](https://www.w3.org/TR/permissions-policy-1/). This policy will be default allow. Any frame that is not allowed `interest-cohort` permission will have a default value returned when they call `document.interestCohort()`. If the main frame does not have `interest-cohort` permission then the page visit will not be included in interest cohort calculation.
 
+The simplest way for most sites to opt out of cohort calculation is to add a meta tag in the page head.
+
+```html
+<meta http-equiv="Permissions-Policy" content="interest-cohort=()">
+```
+
 ## Proof of Concept Experiment
 As a first step toward implementing FLoC, browsers will need to perform closed experiments in order to find a good clustering method to assign users to cohorts and to analyze them to ensure that they’re not revealing sensitive information about users. We consider this the proof-of-concept (POC) stage. The initial phase will be an experiment with cohorts to ensure that they are sufficiently private to be made publicly available to the web. This phase will inform any potential additional phases which would focus on other goals.
 
