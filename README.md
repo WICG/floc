@@ -43,6 +43,12 @@ As such, there will be people for whom providing this information in exchange fo
 ### Tracking people via their cohort
 A cohort could be used as a user identifier. It may not have enough bits of information to individually identify someone, but in combination with other information (such as an IP address), it might. One design mitigation is to ensure cohort sizes are large enough that they are not useful for tracking. The [Privacy Budget explainer](https://github.com/bslassey/privacy-budget) points towards another relevant tool that FLoC could be constrained by.
 
+### Longitudinal Privacy
+The expectation is that the user’s FLoC will be updated over time, so that it continues to have advertising utility. The privacy impacts of this need to be taken into consideration. For instance, multiple FLoC samples means that more information about a user’s browsing history is revealed over time. Possible mitigations include not updating FLoC on a site once it has been called (making it sticky), or reducing the rate of refresh.
+
+Second, if cohorts can be used for tracking, then having more interest cohort samples for a user will make it easier to reidentify them on other sites that have observed the same sequence of cohorts for a user. Possible mitigations for this include designs in which cohorts are updated at different times for different sites, ensuring each site sees a different cohort while the semantic meaning of the cohort remains the same.
+
+
 ### Sensitive Categories
 A cohort might reveal sensitive information. As a first mitigation, the browser should remove sensitive categories from its data collection. But this does not mean sensitive information can’t be leaked. Some people are sensitive to categories that others are not, and there is no globally accepted notion of sensitive categories.
 
