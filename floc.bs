@@ -51,7 +51,7 @@ spec:webidl; type:dfn; text:resolve
 
   The <dfn>string representation of the interest cohort version</dfn> is [=implementation-defined=]. It's recommended that the browser vendor name is part of the version (e.g. “chrome.2.1”, “v21/mozilla”), so that when exposed to the Web, there won't be naming collisions across browser vendors. As an exception, if two browsers choose to deliberately use the same cohort assignment algorithm, they should pick some other way to give it an unambiguous name and avoid collisions.
 
-  The {{InterestCohort}} dictionary is used to contain the [=string representation of the interest cohort id=] and the [=string representation of the interest cohort id=].
+  The {{InterestCohort}} dictionary is used to contain the [=string representation of the interest cohort id=] and the [=string representation of the version=].
 
   <pre class="idl">
   dictionary InterestCohort {
