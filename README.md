@@ -30,6 +30,8 @@ creative = await fetch(url);
 
 The browser uses machine learning algorithms to develop a cohort based on the sites that an individual visits. The algorithms might be based on the URLs of the visited sites, on the content of those pages, or other factors. The central idea is that these input features to the algorithm, including the web history, are kept local on the browser and are not uploaded elsewhere — the browser only exposes the generated cohort. The browser ensures that cohorts are well distributed, so that each represents thousands of people. The browser may further leverage other anonymization methods, such as differential privacy. The number of cohorts should be small, to reinforce that they cannot carry detailed information — short cohort names ("43A7") can help make that clear.
 
+The meaning of a particular cohort should stay roughly consistent over time.  As individual people's browsing behavior changes, their cohort will change too, but the algorithm that turns input features into cohort assignments should remain stable.  If that cohort assignment algorithm does eventually need to change, then the migration to a new assignment algorithm will need to be clearly communicated by the API, so that consumers of the cohort signal are well informed of the need to update their usage.  (See [Issue #58](https://github.com/WICG/floc/issues/58) for more on this topic.)
+
 ## Privacy and Security Considerations
 There are several abuse scenarios this proposal must consider.
 
