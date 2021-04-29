@@ -75,6 +75,8 @@ For this initial phase of Chrome’s Proof-Of-Concept, simple client-side method
 ### How the Interest Cohort will be calculated
 This is where most of the experimentation will occur as we explore the privacy and utility space of FLoC. Our first approach involves applying a SimHash algorithm to the registrable domains of the sites visited by the user in order to cluster users that visit similar sites together. Other ideas include adding other features, such as the full path of the URL or categories of pages provided by an on-device classifier. We may also apply federated learning methods to estimate client models in a distributed fashion. To further enhance user privacy, we will also experiment with adding noise to the output of the hash function, or with occasionally replacing the user's true cohort with a random one.
 
+During the experimentation phase, Chrome's various efforts at cohort assignment algorithms will be documented at https://www.chromium.org/Home/chromium-privacy/privacy-sandbox/floc.
+
 ### Qualifying users for whom a cohort will be logged with their sync data
 For Chrome’s POC, cohorts will be logged with sync in a limited set of circumstances. Namely, all of the following conditions must be met:
 
