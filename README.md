@@ -1,3 +1,6 @@
+# Replaced by the Topics API
+Note that this proposal has been replaced by the [Topics API](https://github.com/jkarlin/topics/).
+
 # Federated Learning of Cohorts (FLoC)
 This is an explainer for a new way that browsers could enable interest-based advertising on the web, in which the companies who today observe the browsing behavior of individuals instead observe the behavior of a cohort of similar people.
 
