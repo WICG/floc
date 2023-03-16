@@ -7,20 +7,8 @@ Level: 1
 URL: https://wicg.github.io/floc/
 Editor: Yao Xiao, Google, yaoxia@chromium.org
 Editor: Josh Karlin, Google, jkarlin@chromium.org
-Abstract: This specification describes a method that could enable ad-targeting based on the people’s general browsing interest without exposing the exact browsing history.
-!Participate: <a href="https://github.com/WICG/floc">GitHub WICG/floc</a> (<a href="https://github.com/WICG/floc/issues/new">new issue</a>, <a href="https://github.com/WICG/floc/issues?state=open">open issues</a>)
+Abstract: This incubation is not longer being pursued. See <a href="https://github.com/patcg-individual-drafts/topics">Topics API</a> instead.
 Group: wicg
 Repository: WICG/floc
 </pre>
 
-<pre class=link-defaults>
-spec:html; type:attribute; text:document
-spec:webidl; type:dfn; text:resolve
-</pre>
-
-<section>
-  <h2 id='introduction'>Introduction</h2>
-  <p>
-    This incubation is not longer being pursued. See <a href="https://github.com/patcg-individual-drafts/topics">Topics API</a> instead.
-  </p>
-</section>
