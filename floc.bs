@@ -21,6 +21,6 @@ spec:webidl; type:dfn; text:resolve
 <section>
   <h2 id='introduction'>Introduction</h2>
   <p>
-    This incubation is not longer being pursued.
+    This incubation is not longer being pursued. See <a href="https://github.com/patcg-individual-drafts/topics">Topics API</a> instead.
   </p>
 </section>
