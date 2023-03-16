@@ -4,10 +4,9 @@
   <title>Federated Learning of Cohorts</title>
   <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
   <link href="https://www.w3.org/StyleSheets/TR/2021/cg-draft" rel="stylesheet">
-  <meta content="Bikeshed version 2e3c4c68b, updated Fri Jan 14 14:49:00 2022 -0800" name="generator">
+  <meta content="Bikeshed version d9f9c3533, updated Fri Mar 10 11:31:29 2023 -0800" name="generator">
   <link href="https://wicg.github.io/floc/" rel="canonical">
 <style>/* style-autolinks */
-
 .css.css, .property.property, .descriptor.descriptor {
     color: var(--a-normal-text);
     font-size: inherit;
@@ -67,7 +66,8 @@ pre .property::before, pre .property::after {
 
 [data-link-type=biblio] {
     white-space: pre;
-}</style>
+}
+</style>
 <style>/* style-colors */
 
 /* Any --*-text not paired with a --*-bg is assumed to have a transparent bg */
@@ -176,9 +176,9 @@ pre .property::before, pre .property::after {
     --outdated-shadow: red;
 
     --editedrec-bg: darkorange;
-}</style>
+}
+</style>
 <style>/* style-counters */
-
 body {
     counter-reset: example figure issue;
 }
@@ -205,50 +205,9 @@ figcaption {
 }
 figcaption:not(.no-marker)::before {
     content: "Figure " counter(figure) " ";
-}</style>
-<style>/* style-dfn-panel */
-
-:root {
-    --dfnpanel-bg: #ddd;
-    --dfnpanel-text: var(--text);
 }
-.dfn-panel {
-    position: absolute;
-    z-index: 35;
-    height: auto;
-    width: -webkit-fit-content;
-    width: fit-content;
-    max-width: 300px;
-    max-height: 500px;
-    overflow: auto;
-    padding: 0.5em 0.75em;
-    font: small Helvetica Neue, sans-serif, Droid Sans Fallback;
-    background: var(--dfnpanel-bg);
-    color: var(--dfnpanel-text);
-    border: outset 0.2em;
-}
-.dfn-panel:not(.on) { display: none; }
-.dfn-panel * { margin: 0; padding: 0; text-indent: 0; }
-.dfn-panel > b { display: block; }
-.dfn-panel a { color: var(--dfnpanel-text); }
-.dfn-panel a:not(:hover) { text-decoration: none !important; border-bottom: none !important; }
-.dfn-panel > b + b { margin-top: 0.25em; }
-.dfn-panel ul { padding: 0; }
-.dfn-panel li { list-style: inside; }
-.dfn-panel.activated {
-    display: inline-block;
-    position: fixed;
-    left: .5em;
-    bottom: 2em;
-    margin: 0 auto;
-    max-width: calc(100vw - 1.5em - .4em - .5em);
-    max-height: 30vh;
-}
-
-.dfn-paneled { cursor: pointer; }
 </style>
 <style>/* style-issues */
-
 a[href].issue-return {
     float: right;
     float: inline-end;
@@ -258,7 +217,6 @@ a[href].issue-return {
 }
 </style>
 <style>/* style-md-lists */
-
 /* This is a weird hack for me not yet following the commonmark spec
    regarding paragraph and lists. */
 [data-md] > :first-child {
@@ -266,7 +224,8 @@ a[href].issue-return {
 }
 [data-md] > :last-child {
     margin-bottom: 0;
-}</style>
+}
+</style>
 <style>/* style-selflinks */
 
 :root {
@@ -294,6 +253,14 @@ a.self-link:hover {
 .heading > a.self-link {
     font-size: 83%;
 }
+.example > a.self-link,
+.note > a.self-link,
+.issue > a.self-link {
+    /* These blocks are overflow:auto, so positioning outside
+       doesn't work. */
+    left: auto;
+    right: 0;
+}
 li > a.self-link {
     left: calc(-1 * (3.5rem - 26px) - 2em);
 }
@@ -318,69 +285,6 @@ dfn > a.self-link:hover {
 a.self-link::before            { content: "¶"; }
 .heading > a.self-link::before { content: "§"; }
 dfn > a.self-link::before      { content: "#"; }
-</style>
-<style>/* style-syntax-highlighting */
-
-            pre.idl.highlight {
-                background: var(--borderedblock-bg, var(--def-bg));
-            }
-            
-code.highlight { padding: .1em; border-radius: .3em; }
-pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em 0; overflow: auto; border-radius: 0; }
-
-.highlight:not(.idl) { background: rgba(0, 0, 0, .03); }
-c-[a] { color: #990055 } /* Keyword.Declaration */
-c-[b] { color: #990055 } /* Keyword.Type */
-c-[c] { color: #708090 } /* Comment */
-c-[d] { color: #708090 } /* Comment.Multiline */
-c-[e] { color: #0077aa } /* Name.Attribute */
-c-[f] { color: #669900 } /* Name.Tag */
-c-[g] { color: #222222 } /* Name.Variable */
-c-[k] { color: #990055 } /* Keyword */
-c-[l] { color: #000000 } /* Literal */
-c-[m] { color: #000000 } /* Literal.Number */
-c-[n] { color: #0077aa } /* Name */
-c-[o] { color: #999999 } /* Operator */
-c-[p] { color: #999999 } /* Punctuation */
-c-[s] { color: #a67f59 } /* Literal.String */
-c-[t] { color: #a67f59 } /* Literal.String.Single */
-c-[u] { color: #a67f59 } /* Literal.String.Double */
-c-[cp] { color: #708090 } /* Comment.Preproc */
-c-[c1] { color: #708090 } /* Comment.Single */
-c-[cs] { color: #708090 } /* Comment.Special */
-c-[kc] { color: #990055 } /* Keyword.Constant */
-c-[kn] { color: #990055 } /* Keyword.Namespace */
-c-[kp] { color: #990055 } /* Keyword.Pseudo */
-c-[kr] { color: #990055 } /* Keyword.Reserved */
-c-[ld] { color: #000000 } /* Literal.Date */
-c-[nc] { color: #0077aa } /* Name.Class */
-c-[no] { color: #0077aa } /* Name.Constant */
-c-[nd] { color: #0077aa } /* Name.Decorator */
-c-[ni] { color: #0077aa } /* Name.Entity */
-c-[ne] { color: #0077aa } /* Name.Exception */
-c-[nf] { color: #0077aa } /* Name.Function */
-c-[nl] { color: #0077aa } /* Name.Label */
-c-[nn] { color: #0077aa } /* Name.Namespace */
-c-[py] { color: #0077aa } /* Name.Property */
-c-[ow] { color: #999999 } /* Operator.Word */
-c-[mb] { color: #000000 } /* Literal.Number.Bin */
-c-[mf] { color: #000000 } /* Literal.Number.Float */
-c-[mh] { color: #000000 } /* Literal.Number.Hex */
-c-[mi] { color: #000000 } /* Literal.Number.Integer */
-c-[mo] { color: #000000 } /* Literal.Number.Oct */
-c-[sb] { color: #a67f59 } /* Literal.String.Backtick */
-c-[sc] { color: #a67f59 } /* Literal.String.Char */
-c-[sd] { color: #a67f59 } /* Literal.String.Doc */
-c-[se] { color: #a67f59 } /* Literal.String.Escape */
-c-[sh] { color: #a67f59 } /* Literal.String.Heredoc */
-c-[si] { color: #a67f59 } /* Literal.String.Interpol */
-c-[sx] { color: #a67f59 } /* Literal.String.Other */
-c-[sr] { color: #a67f59 } /* Literal.String.Regex */
-c-[ss] { color: #a67f59 } /* Literal.String.Symbol */
-c-[vc] { color: #0077aa } /* Name.Variable.Class */
-c-[vg] { color: #0077aa } /* Name.Variable.Global */
-c-[vi] { color: #0077aa } /* Name.Variable.Instance */
-c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 </style>
 <style>/* style-darkmode */
 
@@ -495,6 +399,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
        which is quite common in practice... */
     img { background: white; }
 }
+
 @media (prefers-color-scheme: dark) {
     :root {
         --selflink-text: black;
@@ -502,81 +407,12 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
         --selflink-hover-text: white;
     }
 }
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --dfnpanel-bg: #222;
-        --dfnpanel-text: var(--text);
-    }
-}
-@media (prefers-color-scheme: dark) {
-    .highlight:not(.idl) { background: rgba(255, 255, 255, .05); }
-
-    c-[a] { color: #d33682 } /* Keyword.Declaration */
-    c-[b] { color: #d33682 } /* Keyword.Type */
-    c-[c] { color: #2aa198 } /* Comment */
-    c-[d] { color: #2aa198 } /* Comment.Multiline */
-    c-[e] { color: #268bd2 } /* Name.Attribute */
-    c-[f] { color: #b58900 } /* Name.Tag */
-    c-[g] { color: #cb4b16 } /* Name.Variable */
-    c-[k] { color: #d33682 } /* Keyword */
-    c-[l] { color: #657b83 } /* Literal */
-    c-[m] { color: #657b83 } /* Literal.Number */
-    c-[n] { color: #268bd2 } /* Name */
-    c-[o] { color: #657b83 } /* Operator */
-    c-[p] { color: #657b83 } /* Punctuation */
-    c-[s] { color: #6c71c4 } /* Literal.String */
-    c-[t] { color: #6c71c4 } /* Literal.String.Single */
-    c-[u] { color: #6c71c4 } /* Literal.String.Double */
-    c-[ch] { color: #2aa198 } /* Comment.Hashbang */
-    c-[cp] { color: #2aa198 } /* Comment.Preproc */
-    c-[cpf] { color: #2aa198 } /* Comment.PreprocFile */
-    c-[c1] { color: #2aa198 } /* Comment.Single */
-    c-[cs] { color: #2aa198 } /* Comment.Special */
-    c-[kc] { color: #d33682 } /* Keyword.Constant */
-    c-[kn] { color: #d33682 } /* Keyword.Namespace */
-    c-[kp] { color: #d33682 } /* Keyword.Pseudo */
-    c-[kr] { color: #d33682 } /* Keyword.Reserved */
-    c-[ld] { color: #657b83 } /* Literal.Date */
-    c-[nc] { color: #268bd2 } /* Name.Class */
-    c-[no] { color: #268bd2 } /* Name.Constant */
-    c-[nd] { color: #268bd2 } /* Name.Decorator */
-    c-[ni] { color: #268bd2 } /* Name.Entity */
-    c-[ne] { color: #268bd2 } /* Name.Exception */
-    c-[nf] { color: #268bd2 } /* Name.Function */
-    c-[nl] { color: #268bd2 } /* Name.Label */
-    c-[nn] { color: #268bd2 } /* Name.Namespace */
-    c-[py] { color: #268bd2 } /* Name.Property */
-    c-[ow] { color: #657b83 } /* Operator.Word */
-    c-[mb] { color: #657b83 } /* Literal.Number.Bin */
-    c-[mf] { color: #657b83 } /* Literal.Number.Float */
-    c-[mh] { color: #657b83 } /* Literal.Number.Hex */
-    c-[mi] { color: #657b83 } /* Literal.Number.Integer */
-    c-[mo] { color: #657b83 } /* Literal.Number.Oct */
-    c-[sa] { color: #6c71c4 } /* Literal.String.Affix */
-    c-[sb] { color: #6c71c4 } /* Literal.String.Backtick */
-    c-[sc] { color: #6c71c4 } /* Literal.String.Char */
-    c-[dl] { color: #6c71c4 } /* Literal.String.Delimiter */
-    c-[sd] { color: #6c71c4 } /* Literal.String.Doc */
-    c-[se] { color: #6c71c4 } /* Literal.String.Escape */
-    c-[sh] { color: #6c71c4 } /* Literal.String.Heredoc */
-    c-[si] { color: #6c71c4 } /* Literal.String.Interpol */
-    c-[sx] { color: #6c71c4 } /* Literal.String.Other */
-    c-[sr] { color: #6c71c4 } /* Literal.String.Regex */
-    c-[ss] { color: #6c71c4 } /* Literal.String.Symbol */
-    c-[fm] { color: #268bd2 } /* Name.Function.Magic */
-    c-[vc] { color: #cb4b16 } /* Name.Variable.Class */
-    c-[vg] { color: #cb4b16 } /* Name.Variable.Global */
-    c-[vi] { color: #cb4b16 } /* Name.Variable.Instance */
-    c-[vm] { color: #cb4b16 } /* Name.Variable.Magic */
-    c-[il] { color: #657b83 } /* Literal.Number.Integer.Long */
-}
 </style>
  <body class="h-entry">
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">Federated Learning of Cohorts</h1>
-   <p id="w3c-state"><a href="https://www.w3.org/standards/types#CG-DRAFT">Draft Community Group Report</a>, <time class="dt-updated" datetime="2022-01-25">25 January 2022</time></p>
+   <p id="w3c-state"><a href="https://www.w3.org/standards/types#CG-DRAFT">Draft Community Group Report</a>, <time class="dt-updated" datetime="2023-03-15">15 March 2023</time></p>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -591,7 +427,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     </dl>
    </div>
    <div data-fill-with="warning"></div>
-   <p class="copyright" data-fill-with="copyright"><a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2022 the Contributors to the Federated Learning of Cohorts Specification, published by the <a href="https://www.w3.org/community/wicg/">Web Platform Incubator Community Group</a> under the <a href="https://www.w3.org/community/about/agreements/cla/">W3C Community Contributor License Agreement (CLA)</a>.
+   <p class="copyright" data-fill-with="copyright"><a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2023 the Contributors to the Federated Learning of Cohorts Specification, published by the <a href="https://www.w3.org/community/wicg/">Web Platform Incubator Community Group</a> under the <a href="https://www.w3.org/community/about/agreements/cla/">W3C Community Contributor License Agreement (CLA)</a>.
 A human-readable <a href="http://www.w3.org/community/about/agreements/cla-deed/">summary</a> is available. </p>
    <hr title="Separator for header">
   </div>
@@ -615,38 +451,6 @@ A human-readable <a href="http://www.w3.org/community/about/agreements/cla-deed/
    <h2 class="no-num no-toc no-ref" id="contents">Table of Contents</h2>
    <ol class="toc" role="directory">
     <li><a href="#introduction"><span class="secno">1</span> <span class="content">Introduction</span></a>
-    <li><a href="#interest-cohort-section"><span class="secno">2</span> <span class="content">Interest cohort</span></a>
-    <li><a href="#the-api"><span class="secno">3</span> <span class="content">The API</span></a>
-    <li><a href="#interpretation"><span class="secno">4</span> <span class="content">Interpretation</span></a>
-    <li>
-     <a href="#cohort-assignment-algorithm"><span class="secno">5</span> <span class="content">Cohort assignment algorithm</span></a>
-     <ol class="toc">
-      <li><a href="#input-and-output"><span class="secno">5.1</span> <span class="content">Input and output</span></a>
-      <li><a href="#caching-the-result"><span class="secno">5.2</span> <span class="content">Caching the result</span></a>
-      <li>
-       <a href="#privacy-guarantees"><span class="secno">5.3</span> <span class="content">Privacy guarantees</span></a>
-       <ol class="toc">
-        <li><a href="#anonymity"><span class="secno">5.3.1</span> <span class="content">Anonymity</span></a>
-        <li><a href="#no-browsing-history-recovering-from-cohorts"><span class="secno">5.3.2</span> <span class="content">No browsing history recovering from cohorts</span></a>
-        <li><a href="#no-sensitive-cohorts"><span class="secno">5.3.3</span> <span class="content">No sensitive cohorts</span></a>
-       </ol>
-     </ol>
-    <li><a href="#permissions-policy-integration"><span class="secno">6</span> <span class="content">Permissions policy integration</span></a>
-    <li>
-     <a href="#privacy-considerations"><span class="secno">7</span> <span class="content">Privacy considerations</span></a>
-     <ol class="toc">
-      <li>
-       <a href="#permission"><span class="secno">7.1</span> <span class="content">Permission</span></a>
-       <ol class="toc">
-        <li><a href="#compute-eligibility"><span class="secno">7.1.1</span> <span class="content">Eligibility for a page to be included in the interest cohort computation</span></a>
-        <li><a href="#access-eligibility"><span class="secno">7.1.2</span> <span class="content">Permission to access the interest cohort</span></a>
-        <li><a href="#private-browsing-mode"><span class="secno">7.1.3</span> <span class="content">Private browsing / Incognito mode</span></a>
-        <li><a href="#adoption-phase"><span class="secno">7.1.4</span> <span class="content">Adoption phase</span></a>
-       </ol>
-      <li><a href="#sensitive-information"><span class="secno">7.2</span> <span class="content">Sensitive information</span></a>
-      <li><a href="#tracking-people-via-their-interest-cohort"><span class="secno">7.3</span> <span class="content">Tracking people via their interest cohort</span></a>
-      <li><a href="#recovering-the-browsing-history-from-cohorts"><span class="secno">7.4</span> <span class="content">Recovering the browsing history from cohorts</span></a>
-     </ol>
     <li>
      <a href="#w3c-conformance"><span class="secno"></span> <span class="content">Conformance</span></a>
      <ol class="toc">
@@ -654,157 +458,16 @@ A human-readable <a href="http://www.w3.org/community/about/agreements/cla-deed/
       <li><a href="#w3c-conformant-algorithms"><span class="secno"></span> <span class="content">Conformant Algorithms</span></a>
      </ol>
     <li>
-     <a href="#index"><span class="secno"></span> <span class="content">Index</span></a>
-     <ol class="toc">
-      <li><a href="#index-defined-here"><span class="secno"></span> <span class="content">Terms defined by this specification</span></a>
-      <li><a href="#index-defined-elsewhere"><span class="secno"></span> <span class="content">Terms defined by reference</span></a>
-     </ol>
-    <li>
      <a href="#references"><span class="secno"></span> <span class="content">References</span></a>
      <ol class="toc">
       <li><a href="#normative"><span class="secno"></span> <span class="content">Normative References</span></a>
      </ol>
-    <li><a href="#idl-index"><span class="secno"></span> <span class="content">IDL Index</span></a>
    </ol>
   </nav>
   <main>
    <section>
     <h2 class="heading settled" data-level="1" id="introduction"><span class="secno">1. </span><span class="content">Introduction</span><a class="self-link" href="#introduction"></a></h2>
-    <p>In today’s web, people’s interests are typically inferred based on observing what sites or pages they visit, which relies on tracking techniques like third-party cookies or less-transparent mechanisms like device fingerprinting. It would be better for privacy if interest-based advertising could be accomplished without needing to collect a particular individual’s browsing history.</p>
-    <p>This specification provides an API to enable ad-targeting based on the people’s general browsing interest, without exposing the exact browsing history.</p>
-    <div class="example" id="example-d5ba1303">
-     <a class="self-link" href="#example-d5ba1303"></a> Creating an ad based on the interest cohort: 
-<pre class="lang-js highlight"><c- a>const</c-> cohort <c- o>=</c-> <c- k>await</c-> document<c- p>.</c->interestCohort<c- p>();</c->
-<c- a>const</c-> url <c- o>=</c-> <c- k>new</c-> URL<c- p>(</c-><c- u>"https://ads.example/getCreative"</c-><c- p>);</c->
-url<c- p>.</c->searchParams<c- p>.</c->append<c- p>(</c-><c- u>"cohort_id"</c-><c- p>,</c-> cohort<c- p>.</c->id<c- p>);</c->
-url<c- p>.</c->searchParams<c- p>.</c->append<c- p>(</c-><c- u>"cohort_version"</c-><c- p>,</c-> cohort<c- p>.</c->version<c- p>);</c->
-<c- a>const</c-> creative <c- o>=</c-> <c- k>await</c-> fetch<c- p>(</c->url<c- p>);</c->
-</pre>
-    </div>
-   </section>
-   <section>
-    <h2 class="heading settled" data-level="2" id="interest-cohort-section"><span class="secno">2. </span><span class="content">Interest cohort</span><a class="self-link" href="#interest-cohort-section"></a></h2>
-    <p>The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="interest-cohort">interest cohort</dfn> is a user’s assigned interest group under a particular <a href="#cohort-assignment-algorithm">cohort assignment algorithm</a>. An interest cohort comprises an <a data-link-type="dfn" href="#interest-cohort-id" id="ref-for-interest-cohort-id">interest cohort id</a> and an <a data-link-type="dfn" href="#interest-cohort-version" id="ref-for-interest-cohort-version">interest cohort version</a>.</p>
-    <p>The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="interest-cohort-id">interest cohort id</dfn> represents the interest group that the user is assigned to by the <a href="#cohort-assignment-algorithm">cohort assignment algorithm</a>. The total number of groups should not exceed 2^32, and each group can mapped to a 32 bit integer. The interest cohort id can be invalid, which means no group is assigned.</p>
-    <p>The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="string-representation-of-the-interest-cohort-id">string representation of the interest cohort id</dfn> is the string representation of the mapped integer of the <a data-link-type="dfn" href="#interest-cohort-id" id="ref-for-interest-cohort-id①">interest cohort id</a> in decimal (e.g. “17319”). If the <a data-link-type="dfn" href="#interest-cohort-id" id="ref-for-interest-cohort-id②">interest cohort id</a> is invalid, the string representation will be an empty string.</p>
-    <p>The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="interest-cohort-version">interest cohort version</dfn> identifies the <a href="#cohort-assignment-algorithm">algorithm</a> used to compute the <a data-link-type="dfn" href="#interest-cohort-id" id="ref-for-interest-cohort-id③">interest cohort id</a>.</p>
-    <p>The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="string-representation-of-the-interest-cohort-version">string representation of the interest cohort version</dfn> is <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#implementation-defined" id="ref-for-implementation-defined">implementation-defined</a>. It’s recommended that the browser vendor name is part of the version (e.g. “chrome.2.1”, “v21/mozilla”), so that when exposed to the Web, there won’t be naming collisions across browser vendors. As an exception, if two browsers choose to deliberately use the same cohort assignment algorithm, they should pick some other way to give it an unambiguous name and avoid collisions.</p>
-    <p>The <code class="idl"><a data-link-type="idl" href="#dictdef-interestcohort" id="ref-for-dictdef-interestcohort">InterestCohort</a></code> dictionary is used to contain the <a data-link-type="dfn" href="#string-representation-of-the-interest-cohort-id" id="ref-for-string-representation-of-the-interest-cohort-id">string representation of the interest cohort id</a> and the <a data-link-type="dfn" href="#string-representation-of-the-interest-cohort-version" id="ref-for-string-representation-of-the-interest-cohort-version">string representation of the interest cohort version</a>.</p>
-<pre class="idl highlight def"><c- b>dictionary</c-> <dfn class="dfn-paneled idl-code" data-dfn-type="dictionary" data-export id="dictdef-interestcohort"><code><c- g>InterestCohort</c-></code></dfn> {
-  <a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-DOMString" id="ref-for-idl-DOMString"><c- b>DOMString</c-></a> <dfn class="dfn-paneled idl-code" data-dfn-for="InterestCohort" data-dfn-type="dict-member" data-export data-type="DOMString " id="dom-interestcohort-id"><code><c- g>id</c-></code></dfn>;
-  <a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-DOMString" id="ref-for-idl-DOMString①"><c- b>DOMString</c-></a> <dfn class="dfn-paneled idl-code" data-dfn-for="InterestCohort" data-dfn-type="dict-member" data-export data-type="DOMString " id="dom-interestcohort-version"><code><c- g>version</c-></code></dfn>;
-};
-</pre>
-   </section>
-   <section>
-    <h2 class="heading settled" data-level="3" id="the-api"><span class="secno">3. </span><span class="content">The API</span><a class="self-link" href="#the-api"></a></h2>
-    <p>The interest cohort API lives under the <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#document" id="ref-for-document">Document</a></code> interface since the access permission is tied to the document scope, and the API is only available if the document is in <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#secure-context" id="ref-for-secure-context">secure context</a>.</p>
-<pre class="idl highlight def"><c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://dom.spec.whatwg.org/#document" id="ref-for-document①"><c- g>Document</c-></a> {
-    <a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-promise" id="ref-for-idl-promise"><c- b>Promise</c-></a>&lt;<a data-link-type="idl-name" href="#dictdef-interestcohort" id="ref-for-dictdef-interestcohort①"><c- n>InterestCohort</c-></a>> <a class="idl-code" data-link-type="method" href="#dom-document-interestcohort" id="ref-for-dom-document-interestcohort"><c- g>interestCohort</c-></a>();
-};
-</pre>
-    <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="Document" data-dfn-type="method" data-export id="dom-document-interestcohort"><code>interestCohort()</code></dfn> method steps are:</p>
-    <ol>
-     <li data-md>
-      <p>Let <var>p</var> be <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#a-new-promise" id="ref-for-a-new-promise">a new promise</a>.</p>
-     <li data-md>
-      <p>Run the following steps <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#in-parallel" id="ref-for-in-parallel">in parallel</a>:</p>
-      <ol>
-       <li data-md>
-        <p>If any of the following is true:</p>
-        <ul>
-         <li data-md>
-          <p><a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#this" id="ref-for-this">this</a> is not <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/iframe-embed-object.html#allowed-to-use" id="ref-for-allowed-to-use">allowed to use</a> the "<code><a href="#interest-cohort-policy-controlled-feature" id="ref-for-interest-cohort-policy-controlled-feature">interest-cohort</a></code>" feature.</p>
-         <li data-md>
-          <p>The document is not allowed to access the interest cohort per user preference settings.</p>
-         <li data-md>
-          <p>The user agent believes that too many high-entropy bits of information have already been consumed by the given document, and exposing an interest cohort would violate a privacy budget.</p>
-         <li data-md>
-          <p>The <a href="#cohort-assignment-algorithm">cohort assignment algorithm</a> is unavailable.</p>
-        </ul>
-        <p>then:</p>
-        <ol>
-         <li data-md>
-          <p><a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-global-task" id="ref-for-queue-a-global-task">Queue a global task</a> on the <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="interest-cohort-task-source">interest cohort task source</dfn> given <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#this" id="ref-for-this①">this</a>'s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-relevant-global" id="ref-for-concept-relevant-global">relevant global object</a> to <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#reject" id="ref-for-reject">reject</a> <var>p</var> with a "<code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#notallowederror" id="ref-for-notallowederror">NotAllowedError</a></code>" <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#idl-DOMException" id="ref-for-idl-DOMException">DOMException</a></code>.</p>
-         <li data-md>
-          <p>Abort these steps.</p>
-        </ol>
-       <li data-md>
-        <p>Let <var>id</var> be <a data-link-type="dfn" href="#interest-cohort-id" id="ref-for-interest-cohort-id④">interest cohort id</a> from running the <a href="#cohort-assignment-algorithm">cohort assignment algorithm</a>.</p>
-       <li data-md>
-        <p>Let <var>version</var> be the <a data-link-type="dfn" href="#interest-cohort-version" id="ref-for-interest-cohort-version①">interest cohort version</a> corresponding to the <a href="#cohort-assignment-algorithm">cohort assignment algorithm</a>.</p>
-       <li data-md>
-        <p><a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-global-task" id="ref-for-queue-a-global-task①">Queue a global task</a> on the <a data-link-type="dfn" href="#interest-cohort-task-source" id="ref-for-interest-cohort-task-source">interest cohort task source</a> given <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#this" id="ref-for-this②">this</a>'s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-relevant-global" id="ref-for-concept-relevant-global①">relevant global object</a> to perform the following steps:</p>
-        <ol>
-         <li data-md>
-          <p>Let <var>d</var> be the <code class="idl"><a data-link-type="idl" href="#dictdef-interestcohort" id="ref-for-dictdef-interestcohort②">InterestCohort</a></code> dictionary, with <code class="idl"><a data-link-type="idl" href="#dom-interestcohort-id" id="ref-for-dom-interestcohort-id">id</a></code> being the <a href="#string-representation-of-the-interest-cohort-id" id="ref-for-string-representation-of-the-interest-cohort-id①">string representation</a> of <var>id</var>, and <code class="idl"><a data-link-type="idl" href="#dom-interestcohort-version" id="ref-for-dom-interestcohort-version">version</a></code> being <a href="#string-representation-of-the-interest-cohort-version" id="ref-for-string-representation-of-the-interest-cohort-version①">string representation</a> of <var>version</var>.</p>
-         <li data-md>
-          <p><a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#resolve" id="ref-for-resolve">Resolve</a> <var>p</var> with <var>d</var>.</p>
-        </ol>
-      </ol>
-     <li data-md>
-      <p>Return <var>p</var>.</p>
-    </ol>
-   </section>
-   <section>
-    <h2 class="heading settled" data-level="4" id="interpretation"><span class="secno">4. </span><span class="content">Interpretation</span><a class="self-link" href="#interpretation"></a></h2>
-     Organizations that wish to interpret cohorts can observe the habits of each <a data-link-type="dfn" href="#interest-cohort" id="ref-for-interest-cohort">interest cohort</a> and ad targeting can then be partly based on what group the person falls into. The browser vendors could publicly share more information about the <a data-link-type="dfn" href="#interest-cohort-id" id="ref-for-interest-cohort-id⑤">interest cohort id</a> (e.g. the range of numbers, whether they have semantics, etc.) or the <a data-link-type="dfn" href="#interest-cohort-version" id="ref-for-interest-cohort-version②">interest cohort version</a> (e.g. the algorithm detail, the compatibility between versions, etc.) to help with their modeling decisions. 
-   </section>
-   <section>
-    <h2 class="heading settled" data-level="5" id="cohort-assignment-algorithm"><span class="secno">5. </span><span class="content">Cohort assignment algorithm</span><a class="self-link" href="#cohort-assignment-algorithm"></a></h2>
-     The browser could use machine learning algorithms to develop the <a data-link-type="dfn" href="#interest-cohort-id" id="ref-for-interest-cohort-id⑥">interest cohort id</a> to expose to a given document. 
-    <h3 class="heading settled" data-level="5.1" id="input-and-output"><span class="secno">5.1. </span><span class="content">Input and output</span><a class="self-link" href="#input-and-output"></a></h3>
-     The input features to the algorithm should be based on information from the browsing history, which may include the URLs, the page contents, or other factors. 
-    <p>The input features should be kept local on the browser and should not be uploaded elsewhere.</p>
-    <p>The output of the algorithm is the <a data-link-type="dfn" href="#interest-cohort-id" id="ref-for-interest-cohort-id⑦">interest cohort id</a>.</p>
-    <h3 class="heading settled" data-level="5.2" id="caching-the-result"><span class="secno">5.2. </span><span class="content">Caching the result</span><a class="self-link" href="#caching-the-result"></a></h3>
-     For performance concern and/or to mitigate the risk of <a href="#recovering-the-browsing-history-from-cohorts">recovering the browsing history from cohorts</a>, the algorithm could return a cached <a data-link-type="dfn" href="#interest-cohort-id" id="ref-for-interest-cohort-id⑧">interest cohort id</a> that was computed recently, instead of computing from scratch. 
-    <h3 class="heading settled" data-level="5.3" id="privacy-guarantees"><span class="secno">5.3. </span><span class="content">Privacy guarantees</span><a class="self-link" href="#privacy-guarantees"></a></h3>
-     The algorithm should have the following privacy properties. Sometimes generating an invalid <a data-link-type="dfn" href="#interest-cohort-id" id="ref-for-interest-cohort-id⑨">interest cohort id</a> may be helpful to meet these guarantees. 
-    <h4 class="heading settled" data-level="5.3.1" id="anonymity"><span class="secno">5.3.1. </span><span class="content">Anonymity</span><a class="self-link" href="#anonymity"></a></h4>
-     The browser should ensure that the <a data-link-type="dfn" href="#interest-cohort-id" id="ref-for-interest-cohort-id①⓪">interest cohort ids</a> are well distributed, so that each represents thousands of people, where a person is considered to be associated with an <a data-link-type="dfn" href="#interest-cohort-id" id="ref-for-interest-cohort-id①①">interest cohort id</a> if that <a data-link-type="dfn" href="#interest-cohort-id" id="ref-for-interest-cohort-id①②">interest cohort id</a> was recently computed for them. The browser may further leverage other anonymization methods, such as differential privacy. 
-    <h4 class="heading settled" data-level="5.3.2" id="no-browsing-history-recovering-from-cohorts"><span class="secno">5.3.2. </span><span class="content">No browsing history recovering from cohorts</span><a class="self-link" href="#no-browsing-history-recovering-from-cohorts"></a></h4>
-     The browser should ensure that the <a data-link-type="dfn" href="#interest-cohort-id" id="ref-for-interest-cohort-id①③">interest cohort ids</a> exposed to any given site does not reveal the browsing history. 
-    <h4 class="heading settled" data-level="5.3.3" id="no-sensitive-cohorts"><span class="secno">5.3.3. </span><span class="content">No sensitive cohorts</span><a class="self-link" href="#no-sensitive-cohorts"></a></h4>
-     The browser should ensure that the <a data-link-type="dfn" href="#interest-cohort-id" id="ref-for-interest-cohort-id①④">interest cohort ids</a> are not correlated with <a href="#sensitive-information">sensitive information</a>. 
-   </section>
-   <section>
-    <h2 class="heading settled" data-level="6" id="permissions-policy-integration"><span class="secno">6. </span><span class="content">Permissions policy integration</span><a class="self-link" href="#permissions-policy-integration"></a></h2>
-    <p>This specification defines a <a data-link-type="dfn" href="https://w3c.github.io/webappsec-permissions-policy/#policy-controlled-feature" id="ref-for-policy-controlled-feature">policy-controlled feature</a> identified by the string
-"<code><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="interest-cohort-policy-controlled-feature">interest-cohort</dfn></code>". Its <a data-link-type="dfn" href="https://w3c.github.io/webappsec-permissions-policy/#default-allowlist" id="ref-for-default-allowlist">default allowlist</a> is <code>*</code>. </p>
-   </section>
-   <section>
-    <h2 class="heading settled" data-level="7" id="privacy-considerations"><span class="secno">7. </span><span class="content">Privacy considerations</span><a class="self-link" href="#privacy-considerations"></a></h2>
-    <h3 class="heading settled" data-level="7.1" id="permission"><span class="secno">7.1. </span><span class="content">Permission</span><a class="self-link" href="#permission"></a></h3>
-    <h4 class="heading settled" data-level="7.1.1" id="compute-eligibility"><span class="secno">7.1.1. </span><span class="content">Eligibility for a page to be included in the interest cohort computation</span><a class="self-link" href="#compute-eligibility"></a></h4>
-     By default, a page is eligible for the interest cohort computation if the <code class="idl"><a data-link-type="idl" href="#dom-document-interestcohort" id="ref-for-dom-document-interestcohort①">interestCohort()</a></code> API is used in the page. 
-    <p>The page can opt itself out of the interest cohort computation through the "<code><a href="#interest-cohort-policy-controlled-feature" id="ref-for-interest-cohort-policy-controlled-feature①">interest-cohort</a></code>" <a data-link-type="dfn" href="https://w3c.github.io/webappsec-permissions-policy/#policy-controlled-feature" id="ref-for-policy-controlled-feature①">policy-controlled feature</a>. <a data-link-type="biblio" href="#biblio-permissions-policy">[PERMISSIONS-POLICY]</a></p>
-    <p>The user agent should offer a dedicated permission setting for the user to disallow sites from being included for interest cohort calculations.</p>
-    <h4 class="heading settled" data-level="7.1.2" id="access-eligibility"><span class="secno">7.1.2. </span><span class="content">Permission to access the interest cohort</span><a class="self-link" href="#access-eligibility"></a></h4>
-     The page can restrict itself or subframes from accessing the interest cohort through the "<code><a href="#interest-cohort-policy-controlled-feature" id="ref-for-interest-cohort-policy-controlled-feature②">interest-cohort</a></code>" <a data-link-type="dfn" href="https://w3c.github.io/webappsec-permissions-policy/#policy-controlled-feature" id="ref-for-policy-controlled-feature②">policy-controlled feature</a>. <a data-link-type="biblio" href="#biblio-permissions-policy">[PERMISSIONS-POLICY]</a> 
-    <p><a href="#the-api">The API</a> will return a rejected promise if the user has specifically disallowed the site from accessing the <a data-link-type="dfn" href="#interest-cohort" id="ref-for-interest-cohort①">interest cohort</a>.</p>
-    <h4 class="heading settled" data-level="7.1.3" id="private-browsing-mode"><span class="secno">7.1.3. </span><span class="content">Private browsing / Incognito mode</span><a class="self-link" href="#private-browsing-mode"></a></h4>
-     The interest cohort computation <a href="#cohort-assignment-algorithm">algorithm</a> and the <code class="idl"><a data-link-type="idl" href="#dom-document-interestcohort" id="ref-for-dom-document-interestcohort②">interestCohort()</a></code> API methods are applicable to the private browsing mode as well. That is, if the private browsing mode doesn’t save history at all, the "information from the browsing history" is expected to just be an empty set. 
-    <h4 class="heading settled" data-level="7.1.4" id="adoption-phase"><span class="secno">7.1.4. </span><span class="content">Adoption phase</span><a class="self-link" href="#adoption-phase"></a></h4>
-     To make the adoption easier, the user agent may relax the opt-in requirement while third-party cookies still exist. For example, pages with ads resources are an approximation of the pages that are going to opt-in to interest cohort computation in the long run. Thus, at the adoption phase, the page can be eligible to be included in the interest cohort computation if there are ads resources in the page, OR if <a href="#the-api">the API</a> is used. 
-    <p>Additionally, during the adoption phase, the browser can use the existing cookie settings to approximate the interest cohort permission setting. For example, a page is not allowed to contribute to the interest cohort calculation if cookies are disallowed for that site; when cookies are cleared, previous page visits should not be used for interest cohort computation; accessing to the interest cohort within a <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#document" id="ref-for-document②">Document</a></code> should be denied if cookie access is not allowed in the document, or when third-party cookies are disallowed in general.</p>
-    <h3 class="heading settled" data-level="7.2" id="sensitive-information"><span class="secno">7.2. </span><span class="content">Sensitive information</span><a class="self-link" href="#sensitive-information"></a></h3>
-     An <a data-link-type="dfn" href="#interest-cohort" id="ref-for-interest-cohort②">interest cohort</a> might reveal sensitive information. As a first mitigation, the browser should remove sensitive categories from its data collection. But this does not mean sensitive information can’t be leaked. Some people are sensitive to categories that others are not, and there is no globally accepted notion of sensitive categories. 
-    <p>Cohorts could be evaluated for fairness by measuring and limiting their deviation from population-level demographics with respect to the prevalence of sensitive categories, to prevent their use as proxies for a sensitive category. However, this evaluation would require knowing how many individual people in each cohort were in the sensitive categories, information which could be difficult or intrusive to obtain. As an approximation, the browser could use a mechanism for recognizing which web pages are in sensitive categories. Evaluations could also consider that what is deemed sensitive may depend on the country or region of the world.</p>
-    <p>It should be clear that FLoC will never be able to prevent all misuse. There will be categories that are sensitive in contexts that weren’t predicted. Beyond FLoC’s technical means of preventing abuse, sites that use cohorts will need to ensure that people are treated fairly, just as they must with algorithmic decisions made based on any other data today.</p>
-    <h3 class="heading settled" data-level="7.3" id="tracking-people-via-their-interest-cohort"><span class="secno">7.3. </span><span class="content">Tracking people via their interest cohort</span><a class="self-link" href="#tracking-people-via-their-interest-cohort"></a></h3>
-     An <a data-link-type="dfn" href="#interest-cohort" id="ref-for-interest-cohort③">interest cohort</a> could be used as a user identifier. It may not have enough bits of information to individually identify someone, but in combination with other information (such as an IP address), it might. One design mitigation is to ensure cohort sizes are large enough that they are not useful for tracking. In addition, if the user agent believes that too many high-entropy bits of information have already been consumed by a given <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#document" id="ref-for-document③">Document</a></code>, then the <code class="idl"><a data-link-type="idl" href="#dom-document-interestcohort" id="ref-for-dom-document-interestcohort③">interestCohort()</a></code> algorithm will return a rejected promise, which can help mitigate such tracking. 
-    <p>If for any short time period the <a data-link-type="dfn" href="#interest-cohort" id="ref-for-interest-cohort④">interest cohorts</a> exposed to different sites tends to be the same, then the time series of <a data-link-type="dfn" href="#interest-cohort" id="ref-for-interest-cohort⑤">interest cohorts</a> can also be used as a user identifier. Sites could associate users' first-party identity with a series of <a data-link-type="dfn" href="#interest-cohort" id="ref-for-interest-cohort⑥">interest cohorts</a> observed over time, and could report these series to a single tracking service. The tracking service could then associate each series with the sites to know the browsing history of an individual.</p>
-    <h3 class="heading settled" data-level="7.4" id="recovering-the-browsing-history-from-cohorts"><span class="secno">7.4. </span><span class="content">Recovering the browsing history from cohorts</span><a class="self-link" href="#recovering-the-browsing-history-from-cohorts"></a></h3>
-     Updating the <a data-link-type="dfn" href="#interest-cohort" id="ref-for-interest-cohort⑦">interest cohort</a> too often may increase the likelihood of identifying portions of a user’s browsing history, for instance by using <a href="https://en.wikipedia.org/wiki/Compressed_sensing">compressed sensing</a>. 
-    <p>One possible mitigation is: when the <a data-link-type="dfn" href="#interest-cohort" id="ref-for-interest-cohort⑧">interest cohort</a> is computed and exposed to an origin, pin that <a data-link-type="dfn" href="#interest-cohort" id="ref-for-interest-cohort⑨">interest cohort</a> to that origin for a period of time. When an <a data-link-type="dfn" href="#interest-cohort" id="ref-for-interest-cohort①⓪">interest cohort</a> is pinned to an origin, the execution of the <a href="#cohort-assignment-algorithm">cohort assignment algorithm</a> on that origin will return the cached <a data-link-type="dfn" href="#interest-cohort" id="ref-for-interest-cohort①①">interest cohort</a> instead of computing a new one.</p>
-    <p>If the browser decide to cache <a data-link-type="dfn" href="#interest-cohort" id="ref-for-interest-cohort①②">interest cohorts</a>, it should ensure proper handling of data deletion:</p>
-    <ul>
-     <li data-md>
-      <p>When site data are deleted, and some cached <a data-link-type="dfn" href="#interest-cohort" id="ref-for-interest-cohort①③">interest cohorts</a> are derived from any affected site, those <a data-link-type="dfn" href="#interest-cohort" id="ref-for-interest-cohort①④">interest cohorts</a> should be cleared.</p>
-     <li data-md>
-      <p>When the browsing history is deleted and some cached <a data-link-type="dfn" href="#interest-cohort" id="ref-for-interest-cohort①⑤">interest cohorts</a> are derived from any deleted browsing history, those <a data-link-type="dfn" href="#interest-cohort" id="ref-for-interest-cohort①⑥">interest cohorts</a> should be cleared.</p>
-    </ul>
+    <p> This incubation is not longer being pursued. </p>
    </section>
   </main>
   <div data-fill-with="conformance">
@@ -819,7 +482,7 @@ url<c- p>.</c->searchParams<c- p>.</c->append<c- p>(</c-><c- u>"cohort_version"<
     However, for readability,
     these words do not appear in all uppercase letters in this specification. </p>
    <p>All of the text of this specification is normative
-    except sections explicitly marked as non-normative, examples, and notes. <a data-link-type="biblio" href="#biblio-rfc2119">[RFC2119]</a> </p>
+    except sections explicitly marked as non-normative, examples, and notes. <a data-link-type="biblio" href="#biblio-rfc2119" title="Key words for use in RFCs to Indicate Requirement Levels">[RFC2119]</a> </p>
    <p>Examples in this specification are introduced with the words “for example”
     or are set apart from the normative text
     with <code>class="example"</code>,
@@ -832,7 +495,7 @@ url<c- p>.</c->searchParams<c- p>.</c->append<c- p>(</c-><c- u>"cohort_version"<
     and are set apart from the normative text
     with <code>class="note"</code>,
     like this: </p>
-   <p class="note" role="note">Note, this is an informative note. </p>
+   <p class="note" role="note">Note, this is an informative note.</p>
    <h3 class="no-ref no-num heading settled" id="w3c-conformant-algorithms"><span class="content">Conformant Algorithms</span><a class="self-link" href="#w3c-conformant-algorithms"></a></h3>
    <p>Requirements phrased in the imperative as part of algorithms
     (such as "strip any leading space characters"
@@ -849,336 +512,9 @@ url<c- p>.</c->searchParams<c- p>.</c->append<c- p>(</c-><c- u>"cohort_version"<
     Implementers are encouraged to optimize. </p>
   </div>
 <script src="https://www.w3.org/scripts/TR/2021/fixup.js"></script>
-  <h2 class="no-num no-ref heading settled" id="index"><span class="content">Index</span><a class="self-link" href="#index"></a></h2>
-  <h3 class="no-num no-ref heading settled" id="index-defined-here"><span class="content">Terms defined by this specification</span><a class="self-link" href="#index-defined-here"></a></h3>
-  <ul class="index">
-   <li><a href="#dom-interestcohort-id">id</a><span>, in § 2</span>
-   <li><a href="#interest-cohort">interest cohort</a><span>, in § 2</span>
-   <li><a href="#interest-cohort-policy-controlled-feature">interest-cohort</a><span>, in § 6</span>
-   <li><a href="#dictdef-interestcohort">InterestCohort</a><span>, in § 2</span>
-   <li><a href="#dom-document-interestcohort">interestCohort()</a><span>, in § 3</span>
-   <li><a href="#interest-cohort-id">interest cohort id</a><span>, in § 2</span>
-   <li><a href="#interest-cohort-task-source">interest cohort task source</a><span>, in § 3</span>
-   <li><a href="#interest-cohort-version">interest cohort version</a><span>, in § 2</span>
-   <li><a href="#string-representation-of-the-interest-cohort-id">string representation of the interest cohort id</a><span>, in § 2</span>
-   <li><a href="#string-representation-of-the-interest-cohort-version">string representation of the interest cohort version</a><span>, in § 2</span>
-   <li><a href="#dom-interestcohort-version">version</a><span>, in § 2</span>
-  </ul>
-  <aside class="dfn-panel" data-for="term-for-document">
-   <a href="https://dom.spec.whatwg.org/#document">https://dom.spec.whatwg.org/#document</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-document">3. The API</a> <a href="#ref-for-document①">(2)</a>
-    <li><a href="#ref-for-document②">7.1.4. Adoption phase</a>
-    <li><a href="#ref-for-document③">7.3. Tracking people via their interest cohort</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-allowed-to-use">
-   <a href="https://html.spec.whatwg.org/multipage/iframe-embed-object.html#allowed-to-use">https://html.spec.whatwg.org/multipage/iframe-embed-object.html#allowed-to-use</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-allowed-to-use">3. The API</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-in-parallel">
-   <a href="https://html.spec.whatwg.org/multipage/infrastructure.html#in-parallel">https://html.spec.whatwg.org/multipage/infrastructure.html#in-parallel</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-in-parallel">3. The API</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-queue-a-global-task">
-   <a href="https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-global-task">https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-global-task</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-queue-a-global-task">3. The API</a> <a href="#ref-for-queue-a-global-task①">(2)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-concept-relevant-global">
-   <a href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-relevant-global">https://html.spec.whatwg.org/multipage/webappapis.html#concept-relevant-global</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-concept-relevant-global">3. The API</a> <a href="#ref-for-concept-relevant-global①">(2)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-secure-context">
-   <a href="https://html.spec.whatwg.org/multipage/webappapis.html#secure-context">https://html.spec.whatwg.org/multipage/webappapis.html#secure-context</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-secure-context">3. The API</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-implementation-defined">
-   <a href="https://infra.spec.whatwg.org/#implementation-defined">https://infra.spec.whatwg.org/#implementation-defined</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-implementation-defined">2. Interest cohort</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-default-allowlist">
-   <a href="https://w3c.github.io/webappsec-permissions-policy/#default-allowlist">https://w3c.github.io/webappsec-permissions-policy/#default-allowlist</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-default-allowlist">6. Permissions policy integration</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-policy-controlled-feature">
-   <a href="https://w3c.github.io/webappsec-permissions-policy/#policy-controlled-feature">https://w3c.github.io/webappsec-permissions-policy/#policy-controlled-feature</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-policy-controlled-feature">6. Permissions policy integration</a>
-    <li><a href="#ref-for-policy-controlled-feature①">7.1.1. Eligibility for a page to be included in the interest cohort computation</a>
-    <li><a href="#ref-for-policy-controlled-feature②">7.1.2. Permission to access the interest cohort</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-idl-DOMException">
-   <a href="https://webidl.spec.whatwg.org/#idl-DOMException">https://webidl.spec.whatwg.org/#idl-DOMException</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-idl-DOMException">3. The API</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-idl-DOMString">
-   <a href="https://webidl.spec.whatwg.org/#idl-DOMString">https://webidl.spec.whatwg.org/#idl-DOMString</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-idl-DOMString">2. Interest cohort</a> <a href="#ref-for-idl-DOMString①">(2)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-notallowederror">
-   <a href="https://webidl.spec.whatwg.org/#notallowederror">https://webidl.spec.whatwg.org/#notallowederror</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-notallowederror">3. The API</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-idl-promise">
-   <a href="https://webidl.spec.whatwg.org/#idl-promise">https://webidl.spec.whatwg.org/#idl-promise</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-idl-promise">3. The API</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-a-new-promise">
-   <a href="https://webidl.spec.whatwg.org/#a-new-promise">https://webidl.spec.whatwg.org/#a-new-promise</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-a-new-promise">3. The API</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-reject">
-   <a href="https://webidl.spec.whatwg.org/#reject">https://webidl.spec.whatwg.org/#reject</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-reject">3. The API</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-resolve">
-   <a href="https://webidl.spec.whatwg.org/#resolve">https://webidl.spec.whatwg.org/#resolve</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-resolve">3. The API</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-this">
-   <a href="https://webidl.spec.whatwg.org/#this">https://webidl.spec.whatwg.org/#this</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-this">3. The API</a> <a href="#ref-for-this①">(2)</a> <a href="#ref-for-this②">(3)</a>
-   </ul>
-  </aside>
-  <h3 class="no-num no-ref heading settled" id="index-defined-elsewhere"><span class="content">Terms defined by reference</span><a class="self-link" href="#index-defined-elsewhere"></a></h3>
-  <ul class="index">
-   <li>
-    <a data-link-type="biblio">[DOM]</a> defines the following terms:
-    <ul>
-     <li><span class="dfn-paneled" id="term-for-document">Document</span>
-    </ul>
-   <li>
-    <a data-link-type="biblio">[HTML]</a> defines the following terms:
-    <ul>
-     <li><span class="dfn-paneled" id="term-for-allowed-to-use">allowed to use</span>
-     <li><span class="dfn-paneled" id="term-for-in-parallel">in parallel</span>
-     <li><span class="dfn-paneled" id="term-for-queue-a-global-task">queue a global task</span>
-     <li><span class="dfn-paneled" id="term-for-concept-relevant-global">relevant global object</span>
-     <li><span class="dfn-paneled" id="term-for-secure-context">secure context</span>
-    </ul>
-   <li>
-    <a data-link-type="biblio">[INFRA]</a> defines the following terms:
-    <ul>
-     <li><span class="dfn-paneled" id="term-for-implementation-defined">implementation-defined</span>
-    </ul>
-   <li>
-    <a data-link-type="biblio">[PERMISSIONS-POLICY]</a> defines the following terms:
-    <ul>
-     <li><span class="dfn-paneled" id="term-for-default-allowlist">default allowlist</span>
-     <li><span class="dfn-paneled" id="term-for-policy-controlled-feature">policy-controlled feature</span>
-    </ul>
-   <li>
-    <a data-link-type="biblio">[WEBIDL]</a> defines the following terms:
-    <ul>
-     <li><span class="dfn-paneled" id="term-for-idl-DOMException">DOMException</span>
-     <li><span class="dfn-paneled" id="term-for-idl-DOMString">DOMString</span>
-     <li><span class="dfn-paneled" id="term-for-notallowederror">NotAllowedError</span>
-     <li><span class="dfn-paneled" id="term-for-idl-promise">Promise</span>
-     <li><span class="dfn-paneled" id="term-for-a-new-promise">a new promise</span>
-     <li><span class="dfn-paneled" id="term-for-reject">reject</span>
-     <li><span class="dfn-paneled" id="term-for-resolve">resolve</span>
-     <li><span class="dfn-paneled" id="term-for-this">this</span>
-    </ul>
-  </ul>
   <h2 class="no-num no-ref heading settled" id="references"><span class="content">References</span><a class="self-link" href="#references"></a></h2>
   <h3 class="no-num no-ref heading settled" id="normative"><span class="content">Normative References</span><a class="self-link" href="#normative"></a></h3>
   <dl>
-   <dt id="biblio-dom">[DOM]
-   <dd>Anne van Kesteren. <a href="https://dom.spec.whatwg.org/"><cite>DOM Standard</cite></a>. Living Standard. URL: <a href="https://dom.spec.whatwg.org/">https://dom.spec.whatwg.org/</a>
-   <dt id="biblio-html">[HTML]
-   <dd>Anne van Kesteren; et al. <a href="https://html.spec.whatwg.org/multipage/"><cite>HTML Standard</cite></a>. Living Standard. URL: <a href="https://html.spec.whatwg.org/multipage/">https://html.spec.whatwg.org/multipage/</a>
-   <dt id="biblio-infra">[INFRA]
-   <dd>Anne van Kesteren; Domenic Denicola. <a href="https://infra.spec.whatwg.org/"><cite>Infra Standard</cite></a>. Living Standard. URL: <a href="https://infra.spec.whatwg.org/">https://infra.spec.whatwg.org/</a>
-   <dt id="biblio-permissions-policy">[PERMISSIONS-POLICY]
-   <dd>Ian Clelland. <a href="https://www.w3.org/TR/permissions-policy-1/"><cite>Permissions Policy</cite></a>. 16 July 2020. WD. URL: <a href="https://www.w3.org/TR/permissions-policy-1/">https://www.w3.org/TR/permissions-policy-1/</a>
    <dt id="biblio-rfc2119">[RFC2119]
    <dd>S. Bradner. <a href="https://datatracker.ietf.org/doc/html/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. March 1997. Best Current Practice. URL: <a href="https://datatracker.ietf.org/doc/html/rfc2119">https://datatracker.ietf.org/doc/html/rfc2119</a>
-   <dt id="biblio-webidl">[WEBIDL]
-   <dd>Edgar Chen; Timothy Gu. <a href="https://webidl.spec.whatwg.org/"><cite>Web IDL Standard</cite></a>. Living Standard. URL: <a href="https://webidl.spec.whatwg.org/">https://webidl.spec.whatwg.org/</a>
   </dl>
-  <h2 class="no-num no-ref heading settled" id="idl-index"><span class="content">IDL Index</span><a class="self-link" href="#idl-index"></a></h2>
-<pre class="idl highlight def"><c- b>dictionary</c-> <a href="#dictdef-interestcohort"><code><c- g>InterestCohort</c-></code></a> {
-  <a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-DOMString"><c- b>DOMString</c-></a> <a data-type="DOMString " href="#dom-interestcohort-id"><code><c- g>id</c-></code></a>;
-  <a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-DOMString"><c- b>DOMString</c-></a> <a data-type="DOMString " href="#dom-interestcohort-version"><code><c- g>version</c-></code></a>;
-};
-
-<c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://dom.spec.whatwg.org/#document"><c- g>Document</c-></a> {
-    <a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-promise"><c- b>Promise</c-></a>&lt;<a data-link-type="idl-name" href="#dictdef-interestcohort"><c- n>InterestCohort</c-></a>> <a class="idl-code" data-link-type="method" href="#dom-document-interestcohort"><c- g>interestCohort</c-></a>();
-};
-
-</pre>
-  <aside class="dfn-panel" data-for="interest-cohort">
-   <b><a href="#interest-cohort">#interest-cohort</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-interest-cohort">4. Interpretation</a>
-    <li><a href="#ref-for-interest-cohort①">7.1.2. Permission to access the interest cohort</a>
-    <li><a href="#ref-for-interest-cohort②">7.2. Sensitive information</a>
-    <li><a href="#ref-for-interest-cohort③">7.3. Tracking people via their interest cohort</a> <a href="#ref-for-interest-cohort④">(2)</a> <a href="#ref-for-interest-cohort⑤">(3)</a> <a href="#ref-for-interest-cohort⑥">(4)</a>
-    <li><a href="#ref-for-interest-cohort⑦">7.4. Recovering the browsing history from cohorts</a> <a href="#ref-for-interest-cohort⑧">(2)</a> <a href="#ref-for-interest-cohort⑨">(3)</a> <a href="#ref-for-interest-cohort①⓪">(4)</a> <a href="#ref-for-interest-cohort①①">(5)</a> <a href="#ref-for-interest-cohort①②">(6)</a> <a href="#ref-for-interest-cohort①③">(7)</a> <a href="#ref-for-interest-cohort①④">(8)</a> <a href="#ref-for-interest-cohort①⑤">(9)</a> <a href="#ref-for-interest-cohort①⑥">(10)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="interest-cohort-id">
-   <b><a href="#interest-cohort-id">#interest-cohort-id</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-interest-cohort-id">2. Interest cohort</a> <a href="#ref-for-interest-cohort-id①">(2)</a> <a href="#ref-for-interest-cohort-id②">(3)</a> <a href="#ref-for-interest-cohort-id③">(4)</a>
-    <li><a href="#ref-for-interest-cohort-id④">3. The API</a>
-    <li><a href="#ref-for-interest-cohort-id⑤">4. Interpretation</a>
-    <li><a href="#ref-for-interest-cohort-id⑥">5. Cohort assignment algorithm</a>
-    <li><a href="#ref-for-interest-cohort-id⑦">5.1. Input and output</a>
-    <li><a href="#ref-for-interest-cohort-id⑧">5.2. Caching the result</a>
-    <li><a href="#ref-for-interest-cohort-id⑨">5.3. Privacy guarantees</a>
-    <li><a href="#ref-for-interest-cohort-id①⓪">5.3.1. Anonymity</a> <a href="#ref-for-interest-cohort-id①①">(2)</a> <a href="#ref-for-interest-cohort-id①②">(3)</a>
-    <li><a href="#ref-for-interest-cohort-id①③">5.3.2. No browsing history recovering from cohorts</a>
-    <li><a href="#ref-for-interest-cohort-id①④">5.3.3. No sensitive cohorts</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="string-representation-of-the-interest-cohort-id">
-   <b><a href="#string-representation-of-the-interest-cohort-id">#string-representation-of-the-interest-cohort-id</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-string-representation-of-the-interest-cohort-id">2. Interest cohort</a>
-    <li><a href="#ref-for-string-representation-of-the-interest-cohort-id">3. The API</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="interest-cohort-version">
-   <b><a href="#interest-cohort-version">#interest-cohort-version</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-interest-cohort-version">2. Interest cohort</a>
-    <li><a href="#ref-for-interest-cohort-version①">3. The API</a>
-    <li><a href="#ref-for-interest-cohort-version②">4. Interpretation</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="string-representation-of-the-interest-cohort-version">
-   <b><a href="#string-representation-of-the-interest-cohort-version">#string-representation-of-the-interest-cohort-version</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-string-representation-of-the-interest-cohort-version">2. Interest cohort</a>
-    <li><a href="#ref-for-string-representation-of-the-interest-cohort-version">3. The API</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="dictdef-interestcohort">
-   <b><a href="#dictdef-interestcohort">#dictdef-interestcohort</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dictdef-interestcohort">2. Interest cohort</a>
-    <li><a href="#ref-for-dictdef-interestcohort①">3. The API</a> <a href="#ref-for-dictdef-interestcohort②">(2)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="dom-interestcohort-id">
-   <b><a href="#dom-interestcohort-id">#dom-interestcohort-id</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-interestcohort-id">3. The API</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="dom-interestcohort-version">
-   <b><a href="#dom-interestcohort-version">#dom-interestcohort-version</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-interestcohort-version">3. The API</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="dom-document-interestcohort">
-   <b><a href="#dom-document-interestcohort">#dom-document-interestcohort</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-document-interestcohort">3. The API</a>
-    <li><a href="#ref-for-dom-document-interestcohort①">7.1.1. Eligibility for a page to be included in the interest cohort computation</a>
-    <li><a href="#ref-for-dom-document-interestcohort②">7.1.3. Private browsing / Incognito mode</a>
-    <li><a href="#ref-for-dom-document-interestcohort③">7.3. Tracking people via their interest cohort</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="interest-cohort-task-source">
-   <b><a href="#interest-cohort-task-source">#interest-cohort-task-source</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-interest-cohort-task-source">3. The API</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="interest-cohort-policy-controlled-feature">
-   <b><a href="#interest-cohort-policy-controlled-feature">#interest-cohort-policy-controlled-feature</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-interest-cohort-policy-controlled-feature">3. The API</a>
-    <li><a href="#ref-for-interest-cohort-policy-controlled-feature">7.1.1. Eligibility for a page to be included in the interest cohort computation</a>
-    <li><a href="#ref-for-interest-cohort-policy-controlled-feature">7.1.2. Permission to access the interest cohort</a>
-   </ul>
-  </aside>
-<script>/* script-dfn-panel */
-
-document.body.addEventListener("click", function(e) {
-    var queryAll = function(sel) { return [].slice.call(document.querySelectorAll(sel)); }
-    // Find the dfn element or panel, if any, that was clicked on.
-    var el = e.target;
-    var target;
-    var hitALink = false;
-    while(el.parentElement) {
-        if(el.tagName == "A") {
-            // Clicking on a link in a <dfn> shouldn't summon the panel
-            hitALink = true;
-        }
-        if(el.classList.contains("dfn-paneled")) {
-            target = "dfn";
-            break;
-        }
-        if(el.classList.contains("dfn-panel")) {
-            target = "dfn-panel";
-            break;
-        }
-        el = el.parentElement;
-    }
-    if(target != "dfn-panel") {
-        // Turn off any currently "on" or "activated" panels.
-        queryAll(".dfn-panel.on, .dfn-panel.activated").forEach(function(el){
-            el.classList.remove("on");
-            el.classList.remove("activated");
-        });
-    }
-    if(target == "dfn" && !hitALink) {
-        // open the panel
-        var dfnPanel = document.querySelector(".dfn-panel[data-for='" + el.id + "']");
-        if(dfnPanel) {
-            dfnPanel.classList.add("on");
-            var rect = el.getBoundingClientRect();
-            dfnPanel.style.left = window.scrollX + rect.right + 5 + "px";
-            dfnPanel.style.top = window.scrollY + rect.top + "px";
-            var panelRect = dfnPanel.getBoundingClientRect();
-            var panelWidth = panelRect.right - panelRect.left;
-            if(panelRect.right > document.body.scrollWidth && (rect.left - (panelWidth + 5)) > 0) {
-                // Reposition, because the panel is overflowing
-                dfnPanel.style.left = window.scrollX + rect.left - (panelWidth + 5) + "px";
-            }
-        } else {
-            console.log("Couldn't find .dfn-panel[data-for='" + el.id + "']");
-        }
-    } else if(target == "dfn-panel") {
-        // Switch it to "activated" state, which pins it.
-        el.classList.add("activated");
-        el.style.left = null;
-        el.style.top = null;
-    }
-
-});
-</script>
