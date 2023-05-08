@@ -67,8 +67,8 @@ Cohorts could be evaluated for fairness by measuring and limiting their deviatio
 
 It should be clear that FLoC will never be able to prevent all misuse. There will be categories that are sensitive in contexts that weren't predicted. Beyond FLoC's technical means of preventing abuse, sites that use cohorts will need to ensure that people are treated fairly, just as they must with algorithmic decisions made based on any other data today.
 
-### Opting Out of Computation
-A site should be able to declare that it does not want to be included in the user's list of sites for cohort calculation. This can be accomplished via a new `interest-cohort` [permissions policy](https://www.w3.org/TR/permissions-policy-1/). This policy will be default allow. Any frame that is not allowed `interest-cohort` permission will have a default value returned when they call `document.interestCohort()`. If the main frame does not have `interest-cohort` permission then the page visit will not be included in interest cohort calculation.
+### Opting Into Computation
+A site should be able to declare whether it should be included in the user's list of sites for cohort calculation. This can be accomplished via a new `interest-cohort` [permissions policy](https://www.w3.org/TR/permissions-policy-1/). This policy will be default deny, so that older sites serving sensitive audiences do not inadvertantly contribute to training inappropriate cohorts in the time between FLoC release and the time the sites are fixed. Any frame that is not allowed `interest-cohort` permission will have a default value returned when they call `document.interestCohort()`. If the main frame does not have `interest-cohort` permission then the page visit will not be included in interest cohort calculation.
 
 For example, a site can opt out of all FLoC cohort calculation by sending the HTTP response header:
 
